@@ -96,7 +96,7 @@ export function LandingFooter() {
                 </a>
               </li>
               <li>
-                <Link href="/verify/check" className="hover:text-orange-400 transition-colors">
+                <Link href={LMS_URL} className="hover:text-orange-400 transition-colors">
                   Certificate Verification
                 </Link>
               </li>
