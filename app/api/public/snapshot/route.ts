@@ -10,18 +10,17 @@ export async function GET() {
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // 1. Fetch the published settings
-    const { data: settings, error: settingsError } = await supabase
-      .from("public_snapshot_settings")
-      .select("metric_key")
-      .eq("status", "published");
-
-    if (settingsError) {
-      console.error("Error fetching settings:", settingsError);
-      return NextResponse.json({ error: "Failed to fetch settings" }, { status: 500 });
-    }
-
-    const publishedKeys = new Set(settings?.map(s => s.metric_key) || []);
+    // 1. Mock the published settings (table not yet created in DB)
+    const publishedKeys = new Set([
+      "courses",
+      "microCredentials",
+      "certificatesIssued",
+      "activeLearners",
+      "completedCourses",
+      "programmes",
+      "trainers",
+      "latestUpdates"
+    ]);
 
     // Helper to selectively run count queries only if the metric is published
     async function getCount(table: string, metricKey: string, eqColumn?: string, eqValue?: string) {
