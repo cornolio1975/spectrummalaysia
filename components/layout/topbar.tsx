@@ -65,26 +65,11 @@ export default function Topbar({
         {/* Home Button linking to Landing Page */}
         <Link
           href="/"
-          className="btn btn-outline"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-            fontSize: "0.82rem",
-            fontWeight: "500",
-            textDecoration: "none",
-            padding: "5px 12px",
-            height: "32px",
-            borderRadius: "var(--radius)",
-            color: "var(--text-primary)",
-            borderColor: "var(--border)",
-            background: "var(--surface)",
-            transition: "all 0.15s ease",
-          }}
+          className="btn btn-ghost btn-icon"
+          aria-label="Home"
           title="Return to Landing Page"
         >
-          <Home size={15} style={{ color: "var(--primary)" }} />
-          <span>Home</span>
+          <Home size={18} />
         </Link>
 
         {/* Breadcrumb / context - hidden on small */}

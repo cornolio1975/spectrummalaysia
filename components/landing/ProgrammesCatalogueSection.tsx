@@ -209,7 +209,7 @@ export function ProgrammesCatalogueSection({ programmes }: ProgrammesCataloguePr
                   Close
                 </button>
                 <Link
-                  href="/login"
+                  href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                   className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 text-white text-sm font-bold shadow-lg shadow-orange-500/25 flex items-center gap-2"
                 >
                   <span>Enroll via LMS</span>

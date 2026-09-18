@@ -69,7 +69,7 @@ export function AboutSection() {
               </a>
 
               <Link
-                href="/login"
+                href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                 className="px-6 py-3.5 text-sm font-semibold text-slate-300 hover:text-white rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 flex items-center justify-center gap-2 transition-all duration-200"
               >
                 <span>Login to Portal</span>

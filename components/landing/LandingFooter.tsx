@@ -116,7 +116,7 @@ export function LandingFooter() {
             <ul className="space-y-2.5">
               <li>
                 <Link
-                  href="/login"
+                  href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                   className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-medium"
                 >
                   <span>Participant Login</span>
@@ -125,7 +125,7 @@ export function LandingFooter() {
               </li>
               <li>
                 <Link
-                  href="/login"
+                  href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                   className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-medium"
                 >
                   <span>Trainer Login</span>
@@ -134,7 +134,7 @@ export function LandingFooter() {
               </li>
               <li>
                 <Link
-                  href="/login"
+                  href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                   className="inline-flex items-center gap-1.5 text-rose-400 hover:text-rose-300 font-medium"
                 >
                   <span>Management Login</span>

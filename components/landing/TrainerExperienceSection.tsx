@@ -69,7 +69,7 @@ export function TrainerExperienceSection() {
 
             <div className="flex items-center gap-4">
               <Link
-                href="/login"
+                href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                 className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-bold text-sm shadow-xl shadow-orange-500/25 flex items-center gap-2"
               >
                 <span>Trainer Login</span>

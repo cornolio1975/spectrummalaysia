@@ -113,7 +113,7 @@ export function ParticipantExperienceSection() {
             </div>
 
             <Link
-              href="/login"
+              href="https://indigo-falcon-607276.hostingersite.com/dashboard"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-bold text-sm shadow-xl shadow-orange-500/25"
             >
               <span>Start Learning</span>
