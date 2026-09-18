@@ -1,4 +1,4 @@
-import { getLandingData } from "@/services/landing.service";
+import { getLandingData, fetchPublicSnapshot } from "@/services/landing.service";
 import { LandingHeader } from "@/components/landing/LandingHeader";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { KpiStrip } from "@/components/landing/KpiStrip";
@@ -16,11 +16,15 @@ import { PartnersSection } from "@/components/landing/PartnersSection";
 import { CtaSection } from "@/components/landing/CtaSection";
 import { ContactSection } from "@/components/landing/ContactSection";
 import { LandingFooter } from "@/components/landing/LandingFooter";
+import { PublicSnapshotSection } from "@/components/landing/PublicSnapshotSection";
 
 export const revalidate = 60; // Revalidate every minute for dynamic stats
 
 export default async function HomePage() {
-  const { stats, programmes, achievements, contact } = await getLandingData();
+  const [{ stats, programmes, achievements, contact }, snapshot] = await Promise.all([
+    getLandingData(),
+    fetchPublicSnapshot(),
+  ]);
 
   // Structured Data Schema for Educational Platform SEO
   const jsonLd = {
@@ -63,6 +67,9 @@ export default async function HomePage() {
 
         {/* 3. KPI Stats Strip */}
         <KpiStrip stats={stats} />
+
+        {/* 3b. Public Snapshot Dashboard */}
+        <PublicSnapshotSection snapshot={snapshot} />
 
         {/* 4. About SpectrumMalaysia LMS */}
         <AboutSection />

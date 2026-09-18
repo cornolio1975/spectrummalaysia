@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUp, ShieldCheck, Heart } from "lucide-react";
+import { LMS_URL } from "@/lib/config";
 
 export function LandingFooter() {
   const currentYear = new Date().getFullYear();
@@ -116,7 +117,7 @@ export function LandingFooter() {
             <ul className="space-y-2.5">
               <li>
                 <Link
-                  href="https://indigo-falcon-607276.hostingersite.com/dashboard"
+                  href=LMS_URL
                   className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-medium"
                 >
                   <span>Participant Login</span>
@@ -125,7 +126,7 @@ export function LandingFooter() {
               </li>
               <li>
                 <Link
-                  href="https://indigo-falcon-607276.hostingersite.com/dashboard"
+                  href=LMS_URL
                   className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-medium"
                 >
                   <span>Trainer Login</span>
@@ -134,7 +135,7 @@ export function LandingFooter() {
               </li>
               <li>
                 <Link
-                  href="https://indigo-falcon-607276.hostingersite.com/dashboard"
+                  href=LMS_URL
                   className="inline-flex items-center gap-1.5 text-rose-400 hover:text-rose-300 font-medium"
                 >
                   <span>Management Login</span>

@@ -213,3 +213,43 @@ export async function getLandingData() {
     contact,
   };
 }
+
+export interface PublicSnapshot {
+  updatedAt: string;
+  courses: number;
+  microCredentials: number;
+  certificatesIssued: number;
+  activeLearners: number;
+  completedCourses: number;
+  programmes: number;
+  trainers: number;
+  latestUpdates: {
+    id: string;
+    title: string;
+    description: string;
+    date: string;
+    category: string;
+    link: string;
+  }[];
+  upcomingProgrammes: any[];
+  publicKpis: any[];
+}
+
+export async function fetchPublicSnapshot(): Promise<PublicSnapshot | null> {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    const res = await fetch(`${baseUrl}/api/public/snapshot`, {
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) {
+      console.error("Failed to fetch public snapshot", res.status);
+      return null;
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error fetching public snapshot:", error);
+    return null;
+  }
+}

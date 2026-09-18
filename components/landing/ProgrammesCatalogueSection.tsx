@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { ProgrammeCardData } from "@/services/landing.service";
+import { LMS_URL } from "@/lib/config";
 
 interface ProgrammesCatalogueProps {
   programmes: ProgrammeCardData[];
@@ -209,7 +210,7 @@ export function ProgrammesCatalogueSection({ programmes }: ProgrammesCataloguePr
                   Close
                 </button>
                 <Link
-                  href="https://indigo-falcon-607276.hostingersite.com/dashboard"
+                  href=LMS_URL
                   className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 text-white text-sm font-bold shadow-lg shadow-orange-500/25 flex items-center gap-2"
                 >
                   <span>Enroll via LMS</span>
