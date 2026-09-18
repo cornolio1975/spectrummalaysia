@@ -1,0 +1,14 @@
+{
+  "..\\SpectrumMY-LMS\\node_modules\\next\\dist\\client\\index.js -> ../pages/_app": {
+    "id": 4505,
+    "files": [
+      "static/chunks/6886.704c78733846cd47.js"
+    ]
+  },
+  "..\\SpectrumMY-LMS\\node_modules\\next\\dist\\client\\index.js -> ../pages/_error": {
+    "id": 2208,
+    "files": [
+      "static/chunks/9827.3acd63913fab68bb.js"
+    ]
+  }
+}

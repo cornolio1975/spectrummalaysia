@@ -1,6 +1,7 @@
 import { getCertificateByNo } from "@/app/actions/certificates";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { LANDING_PAGE_URL } from "@/lib/config";
 
 export async function generateMetadata({ params }: { params: Promise<{ certificate_no: string }> }): Promise<Metadata> {
   // Await the params object
@@ -26,7 +27,7 @@ export default async function VerifyCertificatePage({ params }: { params: Promis
           <p className="text-gray-600 mb-6">
             We could not find a certificate matching the number <strong className="font-mono">{certificate_no}</strong>.
           </p>
-          <a href="/" className="text-primary-600 hover:underline font-medium">Return to Homepage</a>
+          <a href={LANDING_PAGE_URL} className="text-primary-600 hover:underline font-medium">Return to Homepage</a>
         </div>
       </div>
     );

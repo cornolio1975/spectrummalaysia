@@ -24,6 +24,7 @@ export default function DashboardShell({
       <Sidebar
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        userRole={userRole}
       />
       <Topbar
         onMenuClick={() => setSidebarOpen((v) => !v)}

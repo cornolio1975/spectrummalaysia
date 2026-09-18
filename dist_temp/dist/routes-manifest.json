@@ -1,0 +1,324 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "onMatchHeaders": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/api/live-classes/join/[id]",
+      "regex": "^/api/live\\-classes/join/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/live\\-classes/join/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/certificates/[id]/view",
+      "regex": "^/certificates/([^/]+?)/view(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/certificates/(?<nxtPid>[^/]+?)/view(?:/)?$"
+    },
+    {
+      "page": "/events/sessions/[id]/attendance",
+      "regex": "^/events/sessions/([^/]+?)/attendance(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/events/sessions/(?<nxtPid>[^/]+?)/attendance(?:/)?$"
+    },
+    {
+      "page": "/events/trainers/[id]/edit",
+      "regex": "^/events/trainers/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/events/trainers/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/events/[id]",
+      "regex": "^/events/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/events/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/live-classes/[id]",
+      "regex": "^/live\\-classes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/live\\-classes/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/live-classes/[id]/manage",
+      "regex": "^/live\\-classes/([^/]+?)/manage(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/live\\-classes/(?<nxtPid>[^/]+?)/manage(?:/)?$"
+    },
+    {
+      "page": "/my-classes/[id]",
+      "regex": "^/my\\-classes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/my\\-classes/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/participants/[id]/edit",
+      "regex": "^/participants/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/participants/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/programmes/[id]",
+      "regex": "^/programmes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/programmes/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/quiz/[id]/take",
+      "regex": "^/quiz/([^/]+?)/take(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/quiz/(?<nxtPid>[^/]+?)/take(?:/)?$"
+    },
+    {
+      "page": "/trainer-workspace/courses/[id]",
+      "regex": "^/trainer\\-workspace/courses/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/trainer\\-workspace/courses/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/verify/[certificate_no]",
+      "regex": "^/verify/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPcertificate_no": "nxtPcertificate_no"
+      },
+      "namedRegex": "^/verify/(?<nxtPcertificate_no>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/admin/audit",
+      "regex": "^/admin/audit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/audit(?:/)?$"
+    },
+    {
+      "page": "/admin/google",
+      "regex": "^/admin/google(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/google(?:/)?$"
+    },
+    {
+      "page": "/admin/profile",
+      "regex": "^/admin/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/profile(?:/)?$"
+    },
+    {
+      "page": "/admin/settings",
+      "regex": "^/admin/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/settings(?:/)?$"
+    },
+    {
+      "page": "/admin/users",
+      "regex": "^/admin/users(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/users(?:/)?$"
+    },
+    {
+      "page": "/certificates",
+      "regex": "^/certificates(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/certificates(?:/)?$"
+    },
+    {
+      "page": "/dashboard",
+      "regex": "^/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard(?:/)?$"
+    },
+    {
+      "page": "/events",
+      "regex": "^/events(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/events(?:/)?$"
+    },
+    {
+      "page": "/events/trainers",
+      "regex": "^/events/trainers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/events/trainers(?:/)?$"
+    },
+    {
+      "page": "/events/trainers/new",
+      "regex": "^/events/trainers/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/events/trainers/new(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/live-classes",
+      "regex": "^/live\\-classes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/live\\-classes(?:/)?$"
+    },
+    {
+      "page": "/live-classes/new",
+      "regex": "^/live\\-classes/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/live\\-classes/new(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/media",
+      "regex": "^/media(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/media(?:/)?$"
+    },
+    {
+      "page": "/my-classes",
+      "regex": "^/my\\-classes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/my\\-classes(?:/)?$"
+    },
+    {
+      "page": "/nadi",
+      "regex": "^/nadi(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/nadi(?:/)?$"
+    },
+    {
+      "page": "/participants",
+      "regex": "^/participants(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/participants(?:/)?$"
+    },
+    {
+      "page": "/participants/new",
+      "regex": "^/participants/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/participants/new(?:/)?$"
+    },
+    {
+      "page": "/programmes",
+      "regex": "^/programmes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/programmes(?:/)?$"
+    },
+    {
+      "page": "/reports",
+      "regex": "^/reports(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reports(?:/)?$"
+    },
+    {
+      "page": "/reports/kpis",
+      "regex": "^/reports/kpis(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reports/kpis(?:/)?$"
+    },
+    {
+      "page": "/reports/live-training",
+      "regex": "^/reports/live\\-training(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reports/live\\-training(?:/)?$"
+    },
+    {
+      "page": "/trainer-workspace",
+      "regex": "^/trainer\\-workspace(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/trainer\\-workspace(?:/)?$"
+    },
+    {
+      "page": "/trainer-workspace/courses",
+      "regex": "^/trainer\\-workspace/courses(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/trainer\\-workspace/courses(?:/)?$"
+    },
+    {
+      "page": "/trainer-workspace/storage",
+      "regex": "^/trainer\\-workspace/storage(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/trainer\\-workspace/storage(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

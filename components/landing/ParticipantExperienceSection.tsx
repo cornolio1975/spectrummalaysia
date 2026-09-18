@@ -1,6 +1,6 @@
+import { LMS_URL } from "@/lib/config";
 import Link from "next/link";
 import {
-import { LMS_URL } from "@/lib/config";
   GraduationCap,
   PlayCircle,
   Award,
@@ -114,7 +114,7 @@ export function ParticipantExperienceSection() {
             </div>
 
             <Link
-              href=LMS_URL
+              href={LMS_URL}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-bold text-sm shadow-xl shadow-orange-500/25"
             >
               <span>Start Learning</span>

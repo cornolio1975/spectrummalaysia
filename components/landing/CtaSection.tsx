@@ -1,6 +1,6 @@
+import { LMS_URL } from "@/lib/config";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
-import { LMS_URL } from "@/lib/config";
 
 export function CtaSection() {
   return (
@@ -38,7 +38,7 @@ export function CtaSection() {
             </a>
 
             <Link
-              href=LMS_URL
+              href={LMS_URL}
               className="px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-semibold text-sm sm:text-base border border-slate-700 hover:border-slate-500 hover:-translate-y-0.5 transition-all duration-200"
             >
               <span>Login to Portal</span>

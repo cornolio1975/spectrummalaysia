@@ -1,6 +1,6 @@
+import { LMS_URL } from "@/lib/config";
 import Link from "next/link";
 import { ArrowRight, BookOpen, CheckCircle2, Shield, Users, Award, PlayCircle } from "lucide-react";
-import { LMS_URL } from "@/lib/config";
 
 export function HeroSection() {
   return (
@@ -60,7 +60,7 @@ export function HeroSection() {
               </a>
 
               <Link
-                href=LMS_URL
+                href={LMS_URL}
                 className="px-7 py-3.5 text-sm sm:text-base font-semibold text-slate-200 hover:text-white rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2"
               >
                 <span>Access LMS</span>

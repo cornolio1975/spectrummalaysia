@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { LMS_URL, LANDING_PAGE_URL } from "@/lib/config";
 import { Menu, X, ArrowRight, ShieldCheck, Sparkles, BookOpen } from "lucide-react";
-import { LMS_URL } from "@/lib/config";
 
 export function LandingHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +18,7 @@ export function LandingHeader() {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#top" },
+    { name: "Home", href: LANDING_PAGE_URL },
     { name: "About", href: "#about" },
     { name: "Programmes", href: "#programmes" },
     { name: "Learning", href: "#learning" },
@@ -40,8 +40,8 @@ export function LandingHeader() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link
-              href="#top"
+            <a
+              href={LANDING_PAGE_URL}
               className="flex items-center gap-3 group focus:outline-none"
               aria-label="SpectrumMalaysia LMS Home"
             >
@@ -65,7 +65,7 @@ export function LandingHeader() {
                   Digital Learning Ecosystem
                 </span>
               </div>
-            </Link>
+            </a>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-7">
@@ -84,13 +84,13 @@ export function LandingHeader() {
             {/* Action Buttons */}
             <div className="hidden sm:flex items-center gap-3">
               <Link
-                href=LMS_URL
+                href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                 className="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-white rounded-lg border border-slate-700/80 hover:border-slate-500 hover:bg-slate-800/60 transition-all duration-200"
               >
                 Login
               </Link>
               <Link
-                href=LMS_URL
+                href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                 className="px-5 py-2 text-sm font-semibold text-white rounded-lg bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-1.5"
               >
                 <span>Access LMS</span>
@@ -101,7 +101,7 @@ export function LandingHeader() {
             {/* Mobile Hamburger Button */}
             <div className="flex lg:hidden items-center gap-2">
               <Link
-                href=LMS_URL
+                href="https://indigo-falcon-607276.hostingersite.com/dashboard"
                 className="px-3 py-1.5 text-xs font-semibold text-white rounded-md bg-orange-500/20 border border-orange-500/40"
               >
                 Login
@@ -141,14 +141,14 @@ export function LandingHeader() {
 
           <div className="flex flex-col gap-3 pt-6 border-t border-slate-800">
             <Link
-              href=LMS_URL
+              href="https://indigo-falcon-607276.hostingersite.com/dashboard"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3 text-center font-semibold text-slate-200 bg-slate-800/80 border border-slate-700 rounded-xl"
             >
               Sign In to Portal
             </Link>
             <Link
-              href=LMS_URL
+              href="https://indigo-falcon-607276.hostingersite.com/dashboard"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3 text-center font-semibold text-white bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 rounded-xl shadow-lg shadow-orange-500/30"
             >

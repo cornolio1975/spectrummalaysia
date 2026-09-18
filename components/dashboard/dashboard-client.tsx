@@ -89,9 +89,10 @@ const PROGRAMME_PERF = [
 
 interface DashboardClientProps {
   stats: DashboardStats;
+  userRole?: string;
 }
 
-export default function DashboardClient({ stats }: DashboardClientProps) {
+export default function DashboardClient({ stats, userRole = "guest" }: DashboardClientProps) {
   const [selectedYear] = useState("2026");
   const [selectedProgramme, setSelectedProgramme] = useState("All");
   const [selectedState, setSelectedState] = useState("All");
@@ -181,6 +182,52 @@ export default function DashboardClient({ stats }: DashboardClientProps) {
             Reset Filters
           </button>
         </div>
+
+        {/* Observer Snapshot Section */}
+        {userRole === "observer" && (
+          <div className="observer-snapshot" style={{
+            marginBottom: "32px",
+            background: "linear-gradient(to right, #1e293b, #0f172a)",
+            borderRadius: "16px",
+            padding: "24px",
+            color: "white",
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+            border: "1px solid #334155"
+          }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <span style={{ fontSize: "24px" }}>👁️</span>
+                <h3 style={{ margin: 0, fontSize: "1.25rem", fontWeight: 600 }}>Observer: Latest Operational Snapshot</h3>
+              </div>
+              <div style={{ fontSize: "0.85rem", color: "#94a3b8", display: "flex", alignItems: "center", gap: "6px" }}>
+                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#10b981" }}></span>
+                Last Updated: {new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' })} MYT
+              </div>
+            </div>
+            
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+              <div style={{ background: "rgba(255,255,255,0.05)", padding: "16px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ fontSize: "0.85rem", color: "#cbd5e1", marginBottom: "8px" }}>Active Programmes</div>
+                <div style={{ fontSize: "1.75rem", fontWeight: 700, color: "#f8fafc" }}>{displayStats.programmes}</div>
+              </div>
+              <div style={{ background: "rgba(255,255,255,0.05)", padding: "16px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ fontSize: "0.85rem", color: "#cbd5e1", marginBottom: "8px" }}>Active Learners</div>
+                <div style={{ fontSize: "1.75rem", fontWeight: 700, color: "#f8fafc" }}>{displayStats.activeLearners.toLocaleString()}</div>
+              </div>
+              <div style={{ background: "rgba(255,255,255,0.05)", padding: "16px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ fontSize: "0.85rem", color: "#cbd5e1", marginBottom: "8px" }}>Certificates Issued</div>
+                <div style={{ fontSize: "1.75rem", fontWeight: 700, color: "#f8fafc" }}>{displayStats.certificates.toLocaleString()}</div>
+              </div>
+              <div style={{ background: "rgba(255,255,255,0.05)", padding: "16px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ fontSize: "0.85rem", color: "#cbd5e1", marginBottom: "8px" }}>KPI Achievement</div>
+                <div style={{ fontSize: "1.75rem", fontWeight: 700, color: "#34d399" }}>{displayStats.kpiAchievement}%</div>
+              </div>
+            </div>
+            <div style={{ marginTop: "16px", fontSize: "0.8rem", color: "#64748b" }}>
+              * You are viewing this data in read-only mode based on your Observer privileges.
+            </div>
+          </div>
+        )}
 
         {/* Primary KPI Cards */}
         <div style={{

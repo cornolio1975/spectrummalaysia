@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { LANDING_PAGE_URL } from "@/lib/config";
 
 interface NavItem {
   icon: string;
@@ -15,7 +16,7 @@ const NAV_STRUCTURE: NavItem[] = [
   {
     icon: "🏠",
     label: "Home / Landing",
-    href: "/",
+    href: LANDING_PAGE_URL,
   },
   {
     icon: "▦",
@@ -86,9 +87,10 @@ const NAV_STRUCTURE: NavItem[] = [
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  userRole?: string;
 }
 
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+export default function Sidebar({ isOpen, onClose, userRole = "guest" }: SidebarProps) {
   const pathname = usePathname();
   const [expanded, setExpanded] = useState<string[]>([]);
 
@@ -131,8 +133,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       <aside className={`sidebar${isOpen ? " open" : ""}`}>
         {/* Logo / Brand — Clickable link to Landing Page */}
-        <Link
-          href="/"
+        <a
+          href={LANDING_PAGE_URL}
           className="sidebar-logo"
           style={{ textDecoration: "none", display: "block" }}
           title="Return to Landing Page"
@@ -180,11 +182,17 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               </div>
             </div>
           </div>
-        </Link>
+        </a>
 
         {/* Navigation */}
         <nav className="sidebar-nav">
-          {NAV_STRUCTURE.map((item) => {
+          {NAV_STRUCTURE.filter(item => {
+            if (userRole === "observer") {
+              const hiddenLabels = ["Administration", "NADI Management", "Live Training"];
+              if (hiddenLabels.includes(item.label)) return false;
+            }
+            return true;
+          }).map((item) => {
             if (!item.children) {
               // Single item
               return (

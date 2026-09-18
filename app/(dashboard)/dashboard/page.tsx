@@ -59,7 +59,18 @@ async function getDashboardStats(supabase: Awaited<ReturnType<typeof createClien
 export default async function DashboardPage() {
   const supabase = await createClient();
 
+  const { data: userData } = await supabase.auth.getUser();
+  let userRole = "guest";
+  if (userData.user) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", userData.user.id)
+      .single();
+    if (profile) userRole = profile.role;
+  }
+
   const stats = await getDashboardStats(supabase);
 
-  return <DashboardClient stats={stats} />;
+  return <DashboardClient stats={stats} userRole={userRole} />;
 }

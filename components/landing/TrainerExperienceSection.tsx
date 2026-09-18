@@ -1,6 +1,6 @@
+import { LMS_URL } from "@/lib/config";
 import Link from "next/link";
 import {
-import { LMS_URL } from "@/lib/config";
   UploadCloud,
   FileCheck,
   Video,
@@ -70,7 +70,7 @@ export function TrainerExperienceSection() {
 
             <div className="flex items-center gap-4">
               <Link
-                href=LMS_URL
+                href={LMS_URL}
                 className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white font-bold text-sm shadow-xl shadow-orange-500/25 flex items-center gap-2"
               >
                 <span>Trainer Login</span>

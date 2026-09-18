@@ -1,6 +1,6 @@
+import { LMS_URL, LANDING_PAGE_URL } from "@/lib/config";
 import Link from "next/link";
 import { ArrowUp, ShieldCheck, Heart } from "lucide-react";
-import { LMS_URL } from "@/lib/config";
 
 export function LandingFooter() {
   const currentYear = new Date().getFullYear();
@@ -11,7 +11,7 @@ export function LandingFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand Column (Span 2 on lg) */}
           <div className="lg:col-span-2">
-            <Link href="#top" className="flex items-center gap-3 mb-4 group">
+            <a href={LANDING_PAGE_URL} className="flex items-center gap-3 mb-4 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 via-orange-500 to-amber-400 p-0.5 shadow-md">
                 <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
                   <span className="font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-tr from-rose-400 via-orange-400 to-amber-300 font-['Sora']">
@@ -27,7 +27,7 @@ export function LandingFooter() {
                   Digital Learning Ecosystem
                 </span>
               </div>
-            </Link>
+            </a>
 
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm mb-6">
               SpectrumMalaysia LMS is a comprehensive digital learning and programme-management platform
@@ -117,7 +117,7 @@ export function LandingFooter() {
             <ul className="space-y-2.5">
               <li>
                 <Link
-                  href=LMS_URL
+                  href={LMS_URL}
                   className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-medium"
                 >
                   <span>Participant Login</span>
@@ -126,7 +126,7 @@ export function LandingFooter() {
               </li>
               <li>
                 <Link
-                  href=LMS_URL
+                  href={LMS_URL}
                   className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-medium"
                 >
                   <span>Trainer Login</span>
@@ -135,7 +135,7 @@ export function LandingFooter() {
               </li>
               <li>
                 <Link
-                  href=LMS_URL
+                  href={LMS_URL}
                   className="inline-flex items-center gap-1.5 text-rose-400 hover:text-rose-300 font-medium"
                 >
                   <span>Management Login</span>
