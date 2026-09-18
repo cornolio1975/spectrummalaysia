@@ -54,7 +54,9 @@ export default async function HomePage() {
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-orange-500 selection:text-white font-['Plus_Jakarta_Sans'] antialiased">
       {/* JSON-LD Structured Data */}
       <script
+        id="schema-jsonld"
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
