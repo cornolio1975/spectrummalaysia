@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LMS_URL, LANDING_PAGE_URL } from "@/lib/config";
-import { Menu, X, ArrowRight, ShieldCheck, Sparkles, BookOpen } from "lucide-react";
+import { Menu, X, ArrowRight, ShieldCheck, Sparkles, BookOpen, Home } from "lucide-react";
 
 export function LandingHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -73,8 +73,9 @@ export function LandingHeader() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-sm font-medium text-slate-300 hover:text-orange-400 transition-colors duration-200 relative group py-1"
+                  className="flex items-center gap-1.5 text-sm font-medium text-slate-300 hover:text-orange-400 transition-colors duration-200 relative group py-1"
                 >
+                  {item.name === "Home" && <Home className="w-4 h-4 mb-0.5" />}
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-400 to-amber-400 transition-all duration-200 group-hover:w-full" />
                 </a>

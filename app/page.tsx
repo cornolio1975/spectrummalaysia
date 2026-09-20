@@ -1,4 +1,5 @@
-import { getLandingData, fetchPublicSnapshot } from "@/services/landing.service";
+import Script from "next/script";
+import { getLandingData, fetchPublicSnapshot, fetchLatestLaunch } from "@/services/landing.service";
 import { LandingHeader } from "@/components/landing/LandingHeader";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { KpiStrip } from "@/components/landing/KpiStrip";
@@ -21,9 +22,10 @@ import { PublicSnapshotSection } from "@/components/landing/PublicSnapshotSectio
 export const revalidate = 60; // Revalidate every minute for dynamic stats
 
 export default async function HomePage() {
-  const [{ stats, programmes, achievements, contact }, snapshot] = await Promise.all([
+  const [{ stats, programmes, achievements, contact }, snapshot, latestLaunch] = await Promise.all([
     getLandingData(),
     fetchPublicSnapshot(),
+    fetchLatestLaunch(),
   ]);
 
   // Structured Data Schema for Educational Platform SEO
@@ -53,10 +55,9 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-orange-500 selection:text-white font-['Plus_Jakarta_Sans'] antialiased">
       {/* JSON-LD Structured Data */}
-      <script
+      <Script
         id="schema-jsonld"
         type="application/ld+json"
-        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
@@ -65,7 +66,7 @@ export default async function HomePage() {
 
       <main>
         {/* 2. Hero Section */}
-        <HeroSection />
+        <HeroSection latestLaunch={latestLaunch} />
 
         {/* 3. KPI Stats Strip */}
         <KpiStrip stats={stats} />

@@ -253,3 +253,60 @@ export async function fetchPublicSnapshot(): Promise<PublicSnapshot | null> {
     return null;
   }
 }
+
+export interface PublicLaunch {
+  id: string;
+  content_type: string;
+  reference_id?: string;
+  course_code?: string;
+  title: string;
+  short_description?: string;
+  hero_image?: string;
+  thumbnail?: string;
+  category?: string;
+  credential_type?: string;
+  duration?: string;
+  delivery_mode?: string;
+  badge_text?: string;
+  cta_text?: string;
+  cta_url?: string;
+  launch_status: string;
+  public_visible: boolean;
+  featured: boolean;
+  start_date?: string;
+  end_date?: string;
+  published_at?: string;
+}
+
+export async function fetchLatestLaunch(): Promise<PublicLaunch | null> {
+  try {
+    const { createClient: createBrowserClient } = await import("@supabase/supabase-js");
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+    
+    if (!supabaseUrl || !supabaseKey) return null;
+    
+    const supabase = createBrowserClient(supabaseUrl, supabaseKey);
+    const { data, error } = await supabase
+      .from("public_launches")
+      .select("*")
+      .eq("public_visible", true)
+      .eq("launch_status", "PUBLISHED")
+      .order("featured", { ascending: false })
+      .order("published_at", { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error) {
+      if (error.code !== "PGRST116") { // PGRST116 is "Results contain 0 rows"
+        console.error("Supabase error fetching latest launch:", error.message || error);
+      }
+      return null;
+    }
+    
+    return data as PublicLaunch;
+  } catch (err) {
+    console.error("Unexpected error fetching latest launch:", err);
+    return null;
+  }
+}
