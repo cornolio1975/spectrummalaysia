@@ -33,6 +33,8 @@ export async function GET() {
       return count || 0;
     }
 
+    const lmsBaseUrl = process.env.NEXT_PUBLIC_LMS_URL || "https://lms.spectrummalaysia.org/";
+
     // 2. Fetch the aggregate counts ONLY for published metrics
     const [
       programmesCount,
@@ -40,7 +42,7 @@ export async function GET() {
       certificatesCount,
       trainersCount,
     ] = await Promise.all([
-      getCount("programmes", "programmes", "status", "active"),
+      getCount("programmes", "programmes"),
       getCount("participants", "activeLearners"),
       getCount("certificates", "certificatesIssued"),
       getCount("trainers", "trainers")
@@ -52,7 +54,7 @@ export async function GET() {
       const { data: recentProgrammesRes } = await supabase
         .from("programmes")
         .select("id, programme_code, programme_name, description, category, created_at")
-        .eq("status", "active")
+        .is("deleted_at", null)
         .order("created_at", { ascending: false })
         .limit(3);
 
@@ -62,7 +64,7 @@ export async function GET() {
         description: p.description,
         date: p.created_at,
         category: p.category || "New Programme",
-        link: `https://indigo-falcon-607276.hostingersite.com/programmes/${p.id}`
+        link: `${lmsBaseUrl.replace(/\/$/, "")}/programmes/${p.id}`
       }));
     }
 

@@ -1,19 +1,16 @@
 import { LMS_URL } from "@/lib/config";
 import Link from "next/link";
-import { ArrowRight, BookOpen, CheckCircle2, Shield, Users, Award, PlayCircle } from "lucide-react";
-import { PublicLaunch } from "@/services/landing.service";
+import { ArrowRight, BookOpen, CheckCircle2, Shield, Award, Users, ChevronRight, FileText, Globe2, Sparkles } from "lucide-react";
+import { COMPANY_INFO } from "@/lib/spectrum-profile-data";
+import { SpectrumLogo } from "./SpectrumLogo";
 
-interface HeroSectionProps {
-  latestLaunch?: PublicLaunch | null;
-}
-
-export function HeroSection({ latestLaunch }: HeroSectionProps) {
+export function HeroSection() {
   return (
     <section id="top" className="relative min-h-[92vh] flex items-center pt-28 pb-16 overflow-hidden bg-slate-950">
-      {/* Dynamic Background Glows & Ambient Gradients */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-rose-600/15 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
+      {/* Background Glows & Accent Gradients matching the PDF branding (Red, Orange, Amber, Navy) */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-red-600/15 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-orange-500/15 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-[110px] pointer-events-none" />
 
       {/* Subtle grid texture overlay */}
       <div
@@ -26,263 +23,178 @@ export function HeroSection({ latestLaunch }: HeroSectionProps) {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Headline, Description & CTAs */}
+          {/* Left Column: Company Profile Headline, Identity & CTAs */}
           <div className="lg:col-span-7 flex flex-col items-start text-left z-10">
-            {/* Pill Kicker */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/60 text-xs font-semibold text-slate-300 shadow-sm mb-6 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-rose-500 to-amber-400 animate-pulse" />
-              <span className="tracking-wider uppercase font-['Sora'] text-[11px] text-amber-300">
-                {latestLaunch?.badge_text || "Nationwide Malaysian Digital Learning Ecosystem"}
+            {/* HRD Corp Registered Training Provider Kicker */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/95 border border-amber-500/30 text-xs font-semibold text-slate-200 shadow-md mb-6 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span className="tracking-wider uppercase font-['Sora'] text-[11px] text-amber-300 font-bold">
+                HRD Corp Registered Training Provider
+              </span>
+              <span className="hidden sm:inline text-slate-500">•</span>
+              <span className="hidden sm:inline text-slate-400 text-[11px]">
+                Valid 22 Jul 2026 – 21 Jul 2027
+              </span>
+            </div>
+
+            {/* Official Company Title */}
+            <div className="text-xs sm:text-sm font-bold tracking-widest text-slate-400 uppercase font-['Sora'] mb-2 flex items-center gap-2">
+              <span>{COMPANY_INFO.name}</span>
+              <span className="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-400 font-mono">
+                {COMPANY_INFO.registrationNo}
               </span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] font-['Sora'] mb-6">
-              {latestLaunch ? (
-                latestLaunch.title
-              ) : (
-                <>
-                  Empowering Learning.
-                  <br />
-                  Connecting Communities.
-                  <br />
-                  Building{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-orange-400 to-amber-300">
-                    Futures.
-                  </span>
-                </>
-              )}
+              Empowering Minds.
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-400 to-amber-300">
+                Building Futures.
+              </span>
             </h1>
 
-            {/* Supporting Paragraph */}
-            <p className="text-base sm:text-lg text-slate-300/90 leading-relaxed max-w-2xl mb-8 font-['Plus_Jakarta_Sans'] font-normal">
-              {latestLaunch?.short_description || 
-                "SpectrumMalaysia LMS is a comprehensive digital learning and programme-management platform connecting learners, trainers, programmes and learning resources through one secure, unified ecosystem."}
+            {/* Supporting Mission Paragraph from PDF */}
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-8 font-normal">
+              A premier Malaysian education and training company delivering comprehensive{" "}
+              <strong className="text-white font-semibold">Corporate Training</strong>,{" "}
+              <strong className="text-white font-semibold">Student Recruitment</strong>, and{" "}
+              <strong className="text-white font-semibold">Lifelong Learning</strong>.{" "}
+              <span className="text-amber-300 font-medium italic">
+                Our mission: to bridge the gap between education and professional success.
+              </span>
             </p>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto mb-10">
-              {(() => {
-                const href = latestLaunch?.cta_url || "#programmes";
-                const isAnchor = href.startsWith("#");
-                const className = "px-7 py-3.5 text-sm sm:text-base font-bold text-white rounded-xl bg-gradient-to-r from-rose-600 via-orange-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 group";
-                
-                const children = (
-                  <>
-                    <span>{latestLaunch?.cta_text || "Explore Learning"}</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </>
-                );
-
-                return isAnchor ? (
-                  <a href={href} className={className}>{children}</a>
-                ) : (
-                  <Link href={href} className={className}>{children}</Link>
-                );
-              })()}
+              <a
+                href="#programmes"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
+              >
+                <span>Explore 45 HRD Corp Courses</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
 
               <Link
                 href={LMS_URL}
-                className="px-7 py-3.5 text-sm sm:text-base font-semibold text-slate-200 hover:text-white rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base font-semibold text-slate-200 hover:text-white rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-amber-400/50 shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2"
               >
-                <span>Access LMS</span>
+                <span>Access LMS Portal</span>
               </Link>
 
-              {!latestLaunch && (
-                <a
-                  href="#about"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-400 hover:text-amber-300 hover:underline py-2 px-1 transition-colors"
-                >
-                  <span>Discover SpectrumMalaysia</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </a>
-              )}
+              <a
+                href="#hrd-claim"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-400 hover:text-amber-300 hover:underline py-2 px-1 transition-colors"
+              >
+                <span>How to Claim HRD Corp Levy</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
             </div>
 
             {/* Trust Badges Bar */}
             <div className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-y-3 gap-x-6 text-xs text-slate-400">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>MQA & JPK Aligned</span>
+                <span>100% HRD Corp Claimable</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-orange-400" />
-                <span>Role-Based Access & Supabase RLS</span>
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>MQA & JPK Micro-Credentials</span>
               </div>
               <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-amber-400" />
-                <span>HRD Corp & Government Ready</span>
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>Certified TTT Trainers Nationwide</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Hero Visual composition */}
+          {/* Right Column: Interactive Card / PDF Identity Showcase */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Outer decorative glow frame */}
-              <div className="absolute -inset-1.5 bg-gradient-to-tr from-rose-600 via-orange-500 to-amber-400 rounded-3xl blur-md opacity-30 group-hover:opacity-60 transition duration-1000" />
+            {/* Glowing Backdrop */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-red-600/20 via-orange-500/20 to-amber-500/20 rounded-3xl blur-2xl transform -rotate-1" />
 
-              {/* Main Visual Card Container */}
-              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 shadow-2xl p-6 min-h-[420px] flex flex-col justify-center">
-                
-                {latestLaunch?.hero_image ? (
-                  <>
-                    <div className="absolute inset-0 w-full h-full z-0">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img 
-                        src={latestLaunch.hero_image} 
-                        alt={latestLaunch.title} 
-                        className="w-full h-full object-cover opacity-60"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
-                    </div>
-                    
-                    {/* Floating course details */}
-                    <div className="relative z-10 w-full mt-auto mb-2 bg-slate-900/80 backdrop-blur-md border border-slate-700/50 p-5 rounded-2xl">
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {latestLaunch.credential_type && (
-                          <span className="px-2 py-1 rounded bg-amber-500/20 text-amber-400 border border-amber-500/20 text-xs font-semibold uppercase tracking-wider">
-                            {latestLaunch.credential_type}
-                          </span>
-                        )}
-                        {latestLaunch.delivery_mode && (
-                          <span className="px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs font-semibold uppercase tracking-wider">
-                            {latestLaunch.delivery_mode}
-                          </span>
-                        )}
-                      </div>
-                      
-                      <div className="text-xl font-bold text-white font-['Sora'] mb-1">
-                        {latestLaunch.title}
-                      </div>
-                      
-                      {(latestLaunch.course_code || latestLaunch.duration) && (
-                        <div className="flex items-center gap-4 text-xs text-slate-300 mt-3 pt-3 border-t border-slate-700/50">
-                          {latestLaunch.course_code && (
-                            <div className="flex items-center gap-1.5 font-mono text-slate-400">
-                              <BookOpen className="w-3.5 h-3.5" />
-                              {latestLaunch.course_code}
-                            </div>
-                          )}
-                          {latestLaunch.duration && (
-                            <div className="flex items-center gap-1.5 font-medium">
-                              <PlayCircle className="w-3.5 h-3.5" />
-                              {latestLaunch.duration}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Default Fallback Content */}
-                    {/* Platform Header Simulation */}
-                    <div className="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-5 relative z-10">
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-                        <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                        <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                        <span className="text-[11px] font-mono text-slate-500 ml-2">lms.spectrummalaysia.com</span>
-                      </div>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                        Live Platform
-                      </span>
-                    </div>
-
-                    {/* Main Feature Preview Graphics */}
-                    <div className="space-y-4 relative z-10">
-                      {/* Digital Classroom Banner */}
-                      <div className="rounded-2xl bg-gradient-to-r from-slate-800/80 to-slate-900/80 p-5 border border-slate-700/50 relative overflow-hidden">
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">
-                              Active Training Program
-                            </span>
-                            <h4 className="text-lg font-bold text-white font-['Sora'] mt-1">
-                              eKelas Pelajar & AI WIRA
-                            </h4>
-                            <p className="text-xs text-slate-400 mt-1">
-                              Connecting 20+ NADI Digital Learning Centres
-                            </p>
-                          </div>
-                          <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400">
-                            <BookOpen className="w-5 h-5" />
-                          </div>
-                        </div>
-
-                        {/* Progress Bar Simulation */}
-                        <div className="mt-4 pt-3 border-t border-slate-700/50 flex items-center justify-between text-xs">
-                          <span className="text-slate-400">Curriculum Completion</span>
-                          <span className="font-bold text-amber-400">87.4%</span>
-                        </div>
-                        <div className="w-full bg-slate-700/60 rounded-full h-1.5 mt-1.5 overflow-hidden">
-                          <div className="bg-gradient-to-r from-orange-500 to-amber-400 h-1.5 rounded-full w-[87%]" />
-                        </div>
-                      </div>
-
-                      {/* Two Mini Feature Blocks */}
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="rounded-xl bg-slate-900/90 border border-slate-800 p-3.5">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-6 h-6 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs">
-                              <Users className="w-3.5 h-3.5" />
-                            </div>
-                            <span className="text-xs font-semibold text-slate-300">Trainers</span>
-                          </div>
-                          <div className="text-xl font-extrabold text-white font-['Sora']">48+</div>
-                          <div className="text-[10px] text-slate-400">Certified Instructors</div>
-                        </div>
-
-                        <div className="rounded-xl bg-slate-900/90 border border-slate-800 p-3.5">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs">
-                              <PlayCircle className="w-3.5 h-3.5" />
-                            </div>
-                            <span className="text-xs font-semibold text-slate-300">Video Lessons</span>
-                          </div>
-                          <div className="text-xl font-extrabold text-white font-['Sora']">350+</div>
-                          <div className="text-[10px] text-slate-400">Private LMS Storage</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Bottom Status Feed */}
-                    <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 relative z-10">
-                      <span className="flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                        <span>Real-time Analytics Connected</span>
-                      </span>
-                      <span className="font-mono text-[10px] text-slate-500">v2.4 Production</span>
-                    </div>
-                  </>
-                )}
+            {/* Showcase Card */}
+            <div className="relative rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl p-6 sm:p-8 backdrop-blur-xl">
+              {/* Header inside card */}
+              <div className="flex items-center justify-between pb-6 border-b border-slate-800/80">
+                <SpectrumLogo size="lg" variant="full" />
               </div>
 
-              {/* Floating Badge 1: Top Right */}
-              <div className="absolute -top-4 -right-4 sm:-right-6 bg-slate-900/90 border border-slate-700/80 backdrop-blur-xl rounded-2xl p-3.5 shadow-2xl animate-bounce duration-1000 hidden sm:block z-20">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 to-orange-500 flex items-center justify-center text-white font-extrabold text-sm shadow-md">
-                    25+
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">Years Heritage</div>
-                    <div className="text-[10px] text-slate-400">Education & Training</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Badge 2: Bottom Left */}
-              <div className="absolute -bottom-5 -left-4 sm:-left-6 bg-slate-900/90 border border-slate-700/80 backdrop-blur-xl rounded-2xl p-3.5 shadow-2xl hidden sm:block z-20">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-emerald-500 flex items-center justify-center text-white shadow-md">
+              {/* Company Status Pill */}
+              <div className="mt-6 p-4 rounded-2xl bg-slate-950/70 border border-amber-500/20">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 shrink-0">
                     <Award className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-white">MQA & HRD Corp</div>
-                    <div className="text-[10px] text-slate-400">Accredited Delivery</div>
+                    <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Sora']">
+                      Pembangunan Sumber Manusia Berhad (Act 2001)
+                    </h4>
+                    <p className="text-xs text-slate-300 mt-0.5">
+                      Certificate Serial No: <strong className="text-amber-300 font-mono">202201007933</strong>
+                    </p>
+                    <p className="text-[11px] text-slate-400 mt-1">
+                      All 45 programmes can be claimed against your HRD Corp levy (public, in-house, or online).
+                    </p>
                   </div>
                 </div>
+              </div>
+
+              {/* Three Divisions Quick Matrix */}
+              <div className="mt-5 space-y-2.5">
+                <div className="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-slate-700 flex items-center justify-between group transition-colors">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center font-mono text-xs font-bold">
+                      01
+                    </span>
+                    <div>
+                      <div className="text-xs font-bold text-white group-hover:text-amber-300 transition-colors">
+                        Corporate Training
+                      </div>
+                      <div className="text-[11px] text-slate-400">45 claimable programmes across 9 industries</div>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors" />
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-slate-700 flex items-center justify-between group transition-colors">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 flex items-center justify-center font-mono text-xs font-bold">
+                      02
+                    </span>
+                    <div>
+                      <div className="text-xs font-bold text-white group-hover:text-amber-300 transition-colors">
+                        Student Recruitment
+                      </div>
+                      <div className="text-[11px] text-slate-400">Nationwide agents & international partnerships</div>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors" />
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 hover:border-slate-700 flex items-center justify-between group transition-colors">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center font-mono text-xs font-bold">
+                      03
+                    </span>
+                    <div>
+                      <div className="text-xs font-bold text-white group-hover:text-amber-300 transition-colors">
+                        Lifelong Learning
+                      </div>
+                      <div className="text-[11px] text-slate-400">MQA & JPK micro-credentials stackable to degree</div>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors" />
+                </div>
+              </div>
+
+              {/* Verified Badge Footer */}
+              <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span className="flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Delivering Excellence Since 2012</span>
+                </span>
+                <span className="font-semibold text-slate-300">5,000+ Alumni</span>
               </div>
             </div>
           </div>

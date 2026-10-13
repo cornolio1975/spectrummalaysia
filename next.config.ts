@@ -8,8 +8,8 @@ const nextConfig: NextConfig = {
       {
         source: '/login',
         destination: process.env.NEXT_PUBLIC_LMS_URL 
-          ? `${process.env.NEXT_PUBLIC_LMS_URL}/login` 
-          : 'https://lms.spectrummy.com/login',
+          ? `${process.env.NEXT_PUBLIC_LMS_URL.replace(/\/$/, '')}/login` 
+          : 'https://lms.spectrummalaysia.org/login',
         permanent: false,
       },
     ];

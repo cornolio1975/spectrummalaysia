@@ -1,54 +1,46 @@
 import Script from "next/script";
-import { getLandingData, fetchPublicSnapshot, fetchLatestLaunch } from "@/services/landing.service";
 import { LandingHeader } from "@/components/landing/LandingHeader";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { KpiStrip } from "@/components/landing/KpiStrip";
 import { AboutSection } from "@/components/landing/AboutSection";
-import { CapabilitiesSection } from "@/components/landing/CapabilitiesSection";
-import { EcosystemFlowSection } from "@/components/landing/EcosystemFlowSection";
+import { DivisionsSection } from "@/components/landing/DivisionsSection";
+import { HrdClaimGuideSection } from "@/components/landing/HrdClaimGuideSection";
 import { ProgrammesCatalogueSection } from "@/components/landing/ProgrammesCatalogueSection";
-import { DigitalLearningSection } from "@/components/landing/DigitalLearningSection";
-import { TrainerExperienceSection } from "@/components/landing/TrainerExperienceSection";
-import { ParticipantExperienceSection } from "@/components/landing/ParticipantExperienceSection";
-import { AnalyticsPreviewSection } from "@/components/landing/AnalyticsPreviewSection";
-import { AchievementsSection } from "@/components/landing/AchievementsSection";
-import { WhySpectrumSection } from "@/components/landing/WhySpectrumSection";
+import { StudentRecruitmentSection } from "@/components/landing/StudentRecruitmentSection";
+import { LifelongLearningSection } from "@/components/landing/LifelongLearningSection";
+import { TrainingGallerySection } from "@/components/landing/TrainingGallerySection";
+import { AdvisorsSection } from "@/components/landing/AdvisorsSection";
 import { PartnersSection } from "@/components/landing/PartnersSection";
-import { CtaSection } from "@/components/landing/CtaSection";
 import { ContactSection } from "@/components/landing/ContactSection";
 import { LandingFooter } from "@/components/landing/LandingFooter";
-import { PublicSnapshotSection } from "@/components/landing/PublicSnapshotSection";
+import { COMPANY_INFO } from "@/lib/spectrum-profile-data";
 
-export const revalidate = 60; // Revalidate every minute for dynamic stats
+export const revalidate = 60;
 
-export default async function HomePage() {
-  const [{ stats, programmes, achievements, contact }, snapshot, latestLaunch] = await Promise.all([
-    getLandingData(),
-    fetchPublicSnapshot(),
-    fetchLatestLaunch(),
-  ]);
-
-  // Structured Data Schema for Educational Platform SEO
+export default function HomePage() {
+  // Structured Data Schema for Spectrum Edu Resources (M) Sdn. Bhd.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    name: "SpectrumMalaysia LMS",
+    name: COMPANY_INFO.name,
+    legalName: COMPANY_INFO.name,
     description:
-      "A comprehensive digital learning and programme-management platform connecting learners, trainers, programmes and learning resources through one secure ecosystem.",
-    url: "https://spectrummalaysia.com",
+      "A premier Malaysian education and training company providing comprehensive HRD Corp claimable corporate training, nationwide student recruitment, and lifelong micro-credentials.",
+    url: "https://spectrummalaysia.org",
+    logo: "https://spectrummalaysia.org/spectrum-logo.png",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Suite 3A.18, I-01-05, 5th Floor, Block I, Setiawalk, Persiaran Wawasan",
-      addressLocality: "Puchong",
-      addressRegion: "Selangor",
-      postalCode: "47160",
+      streetAddress: `${COMPANY_INFO.address.suite}, ${COMPANY_INFO.address.building}`,
+      addressLocality: COMPANY_INFO.address.city,
+      addressRegion: COMPANY_INFO.address.state,
+      postalCode: COMPANY_INFO.address.postcode,
       addressCountry: "MY",
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: contact.phone,
-      contactType: "customer support",
-      email: contact.email,
+      telephone: COMPANY_INFO.contact.phone,
+      contactType: "corporate inquiries",
+      email: COMPANY_INFO.contact.email,
     },
   };
 
@@ -66,55 +58,43 @@ export default async function HomePage() {
 
       <main>
         {/* 2. Hero Section */}
-        <HeroSection latestLaunch={latestLaunch} />
+        <HeroSection />
 
-        {/* 3. KPI Stats Strip */}
-        <KpiStrip stats={stats} />
+        {/* 3. KPI Stats Strip (2012, 5,000+, 25 yrs, 800K, 45 courses, 20+ agents) */}
+        <KpiStrip />
 
-        {/* 3b. Public Snapshot Dashboard */}
-        <PublicSnapshotSection snapshot={snapshot} />
-
-        {/* 4. About SpectrumMalaysia LMS */}
+        {/* 4. About Spectrum Edu Resources & How We Deliver Value (Pages 2-3) */}
         <AboutSection />
 
-        {/* 5. Platform Capabilities */}
-        <CapabilitiesSection />
+        {/* 5. Our Three Divisions: Corporate Training, Recruitment, Lifelong Learning (Page 4) */}
+        <DivisionsSection />
 
-        {/* 6. Learning Ecosystem Flow */}
-        <EcosystemFlowSection />
+        {/* 6. HRD Corp Registered Provider & 5-Step Claim Process (Pages 5-7) */}
+        <HrdClaimGuideSection />
 
-        {/* 7. Programmes Catalogue */}
-        <ProgrammesCatalogueSection programmes={programmes} />
+        {/* 7. Complete 45 HRD Corp Programmes across 9 Areas (Pages 8-11) */}
+        <ProgrammesCatalogueSection />
 
-        {/* 8. Digital Learning & Media Repository */}
-        <DigitalLearningSection />
+        {/* 8. Division 02: Student Recruitment Hub & Global Counterparts (Pages 14-16) */}
+        <StudentRecruitmentSection />
 
-        {/* 9. Trainer Experience */}
-        <TrainerExperienceSection />
+        {/* 9. Division 03: Lifelong Learning, MQA/JPK Micro-credentials & Track Record (Pages 12-13) */}
+        <LifelongLearningSection />
 
-        {/* 10. Participant Experience */}
-        <ParticipantExperienceSection />
+        {/* 10. Training Sessions, Briefings & Program Madani Gallery (Pages 22-23) */}
+        <TrainingGallerySection />
 
-        {/* 11. Management & Analytics */}
-        <AnalyticsPreviewSection />
+        {/* 11. Board of Advisors (Page 21) */}
+        <AdvisorsSection />
 
-        {/* 12. Achievements & Impact */}
-        <AchievementsSection achievements={achievements} />
-
-        {/* 13. Why SpectrumMalaysia LMS */}
-        <WhySpectrumSection />
-
-        {/* 14. Trust & Partners */}
+        {/* 12. Accreditations, Awarding Bodies & Institutional Partners (Pages 19-20) */}
         <PartnersSection />
 
-        {/* 15. Call to Action */}
-        <CtaSection />
-
-        {/* 16. Contact Details & Form */}
-        <ContactSection contact={contact} />
+        {/* 13. Contact & Workforce Inquiry Form (Page 24) */}
+        <ContactSection />
       </main>
 
-      {/* 17. Footer */}
+      {/* 14. Footer */}
       <LandingFooter />
     </div>
   );

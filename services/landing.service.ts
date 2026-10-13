@@ -49,56 +49,43 @@ const DEFAULT_STATS: LandingStats = {
 
 const DEFAULT_PROGRAMMES: ProgrammeCardData[] = [
   {
-    id: "40000000-0000-0000-0000-000000000001",
-    code: "PROG-EKELAS-P",
-    name: "eKelas Pelajar",
+    id: "5e49b315-b014-4dad-a213-d8f13e7c4416",
+    code: "PROG-NADI-GLCP-2027",
+    name: "NADI Global Language & Communication Programme",
     description:
-      "A comprehensive digital learning programme designed for Malaysian school students, covering core academic subjects enhanced with AI-powered tools, STEM exercises, and critical thinking skills.",
-    category: "Academic & STEM",
-    targetAudience: "Ages 13–17 (Secondary)",
-    modulesCount: 6,
-    mode: "Hybrid & Digital",
-    status: "Active",
-    badge: "Flagship",
+      "Practical multilingual curriculum for work, business, tourism, and global opportunities across 15 languages spanning Foundation, Applied, and Advanced communication tracks.",
+    category: "Language & Communication",
+    targetAudience: "Youth, Community Learners & MSMEs",
+    modulesCount: 50,
+    mode: "Online Masterclasses & NADI Practical Labs",
+    status: "Draft / Pilot",
+    badge: "FY2027 Programme",
   },
   {
-    id: "40000000-0000-0000-0000-000000000002",
-    code: "PROG-EKELAS-U",
-    name: "eKelas Usahawan",
+    id: "66873f1e-6f30-43b9-a38a-6ea8e60a0bc1",
+    code: "PROG-NADI-GRADUATE-2027",
+    name: "NADI Graduate — Micro-Credentials & Continuous Learning Programme",
     description:
-      "An entrepreneurship accelerator leveraging digital commerce, branding, financial literacy, and design thinking to empower aspiring Malaysian entrepreneurs, youth, and women.",
-    category: "Entrepreneurship",
-    targetAudience: "Ages 18–39 (Youth & Adults)",
-    modulesCount: 5,
-    mode: "Interactive Workshops",
-    status: "Active",
-    badge: "Popular",
+      "Structured micro-credential pathways building practical digital competencies, AI skills, and workplace readiness for lifelong learners, SPM holders, and jobseekers.",
+    category: "Digital Micro-Credentials & TVET",
+    targetAudience: "Youth, SPM Holders & Working Adults",
+    modulesCount: 12,
+    mode: "Hybrid (Masterclasses, LMS & Centre Labs)",
+    status: "Draft / Pilot",
+    badge: "Micro-Credentials",
   },
   {
-    id: "40000000-0000-0000-0000-000000000003",
-    code: "PROG-AIWIRA",
-    name: "AI WIRA Community Initiative",
+    id: "b811bbe2-7acb-412e-a43f-586959275155",
+    code: "PROG-MAXIS-FP-2027",
+    name: "MAXIS Franchise Pro",
     description:
-      "A pioneering artificial intelligence awareness and practical skills curriculum designed to build AI literacy, ethical reasoning, and prompt engineering among Malaysian community learners.",
-    category: "Emerging Tech & AI",
-    targetAudience: "Ages 13–45 (All Communities)",
-    modulesCount: 4,
-    mode: "Hands-on Labs",
-    status: "Active",
-    badge: "New",
-  },
-  {
-    id: "40000000-0000-0000-0000-000000000004",
-    code: "PROG-MICRO-TECH",
-    name: "Digital Micro-Credentials (MQA/JPK)",
-    description:
-      "Accredited micro-credentials developed in alignment with national qualifications frameworks, offering credit transfer opportunities and recognized digital badges for lifelong learners.",
-    category: "Professional Certification",
-    targetAudience: "Ages 18+ (Lifelong Learners)",
-    modulesCount: 8,
-    mode: "Blended & Self-Paced",
-    status: "Active",
-    badge: "Certified",
+      "Comprehensive blended entrepreneurship programme with the Malaysian Franchise Association (MFA) moving community learners from awareness to practical franchise ownership and operations.",
+    category: "Franchise & Digital Entrepreneurship",
+    targetAudience: "Aspiring Entrepreneurs, B40 & Micro-SMEs",
+    modulesCount: 12,
+    mode: "Blended (Webinars, NADI Workshops & Mentoring)",
+    status: "Draft / Proposal",
+    badge: "Entrepreneurship Track",
   },
 ];
 
@@ -146,26 +133,32 @@ export async function getLandingData() {
   try {
     const supabase = await createClient();
 
-    // Query active programmes
+    // Query active and valid programmes
     const { data: progData } = await supabase
       .from("programmes")
       .select("id, programme_code, programme_name, description, category, target_age_group, status")
-      .eq("status", "active")
+      .is("deleted_at", null)
+      .order("programme_code", { ascending: true })
       .limit(6);
 
     if (progData && progData.length > 0) {
       // Map database programmes
-      programmes = progData.map((p) => ({
-        id: p.id,
-        code: p.programme_code,
-        name: p.programme_name,
-        description: p.description || "Structured digital learning curriculum.",
-        category: p.category || "General",
-        targetAudience: p.target_age_group ? `Ages ${p.target_age_group}` : "All Learners",
-        modulesCount: 5,
-        mode: "Hybrid & Online",
-        status: p.status,
-      }));
+      programmes = progData.map((p) => {
+        const defaultMatch = DEFAULT_PROGRAMMES.find((dp) => dp.code === p.programme_code || dp.id === p.id);
+        const firstSentence = p.description ? p.description.split("\n")[0] : "";
+        return {
+          id: p.id,
+          code: p.programme_code,
+          name: p.programme_name,
+          description: defaultMatch?.description || firstSentence || "Structured digital learning curriculum.",
+          category: defaultMatch?.category || p.category || "General",
+          targetAudience: defaultMatch?.targetAudience || (p.target_age_group ? `Ages ${p.target_age_group}` : "All Learners"),
+          modulesCount: defaultMatch?.modulesCount || 12,
+          mode: defaultMatch?.mode || "Hybrid & Online",
+          status: defaultMatch?.status || (p.status === "draft" ? "Draft / Proposal" : p.status),
+          badge: defaultMatch?.badge,
+        };
+      });
     }
 
     // Query counts

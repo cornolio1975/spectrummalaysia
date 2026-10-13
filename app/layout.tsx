@@ -3,33 +3,44 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "SpectrumMalaysia LMS — Digital Learning & Programme Management Platform",
-    template: "%s | SpectrumMalaysia LMS",
+    default: "Spectrum Edu Resources (M) Sdn. Bhd. — HRD Corp Registered Training Provider",
+    template: "%s | Spectrum Edu Resources",
   },
   description:
-    "SpectrumMalaysia LMS is a comprehensive digital learning and programme-management platform connecting learners, trainers, programmes, learning resources and performance analytics.",
+    "Empowering Minds. Building Futures. Spectrum Edu Resources (M) Sdn. Bhd. (Co. No. 202201007933) is a Malaysian education and training company delivering HRD Corp claimable corporate training, student recruitment, and lifelong micro-credentials.",
   keywords: [
-    "SpectrumMalaysia",
-    "SpectrumMalaysia LMS",
-    "Learning Management System",
-    "Digital Learning Malaysia",
-    "Programme Management",
-    "Training Platform",
-    "Enterprise LMS",
-    "Education Malaysia",
+    "Spectrum Edu Resources",
+    "Spectrum Edu Resources (M) Sdn. Bhd.",
+    "HRD Corp Registered Training Provider",
+    "HRD Corp Claimable Courses",
+    "Corporate Training Malaysia",
+    "Student Recruitment Malaysia",
+    "Lifelong Learning",
+    "MQA Micro-credentials",
+    "JPK",
+    "Program Madani",
+    "PERKESO EIS Reskilling",
   ],
-  authors: [{ name: "SpectrumMalaysia Edu Resources" }],
+  authors: [{ name: "Spectrum Edu Resources (M) Sdn. Bhd." }],
   openGraph: {
-    title: "SpectrumMalaysia LMS — Digital Learning & Programme Management Platform",
+    title: "Spectrum Edu Resources (M) Sdn. Bhd. — HRD Corp Registered Training Provider",
     description:
-      "Empowering Learning. Connecting Communities. Building Futures. Comprehensive digital learning and programme management platform.",
+      "Empowering Minds. Building Futures. Bridging the gap between education and professional success across Corporate Training, Student Recruitment, and Lifelong Learning.",
     type: "website",
     locale: "en_MY",
-    url: "https://spectrummalaysia.com",
-    siteName: "SpectrumMalaysia LMS",
+    url: "https://spectrummalaysia.org",
+    siteName: "Spectrum Edu Resources",
+    images: [
+      {
+        url: "/spectrum-logo.png",
+        width: 1200,
+        height: 400,
+        alt: "Spectrum Edu Resources (M) Sdn. Bhd.",
+      },
+    ],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/spectrum-logo.png",
   },
 };
 

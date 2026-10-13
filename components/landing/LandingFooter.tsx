@@ -1,173 +1,149 @@
 import { LMS_URL, LANDING_PAGE_URL } from "@/lib/config";
 import Link from "next/link";
-import { ArrowUp, ShieldCheck, Heart } from "lucide-react";
+import { SpectrumLogo } from "./SpectrumLogo";
+import { COMPANY_INFO } from "@/lib/spectrum-profile-data";
+import { ShieldCheck, Award, MapPin, Mail, Phone, ArrowRight } from "lucide-react";
 
 export function LandingFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-800/80 text-slate-400 text-xs font-normal">
+    <footer className="bg-slate-950 border-t border-slate-900 text-slate-400 font-['Plus_Jakarta_Sans']">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-          {/* Brand Column (Span 2 on lg) */}
-          <div className="lg:col-span-2">
-            <a href={LANDING_PAGE_URL} className="flex items-center gap-3 mb-4 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 via-orange-500 to-amber-400 p-0.5 shadow-md">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <span className="font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-tr from-rose-400 via-orange-400 to-amber-300 font-['Sora']">
-                    S
-                  </span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+          {/* Column 1: Official Company Brand */}
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div>
+              <a href={LANDING_PAGE_URL} className="inline-block mb-4">
+                <SpectrumLogo size="lg" variant="horizontal" />
+              </a>
+
+              <div className="text-xs font-bold text-slate-300 font-['Sora'] mt-1">
+                {COMPANY_INFO.name}
+              </div>
+              <div className="text-[11px] text-slate-500 font-mono mt-0.5">
+                Company No. {COMPANY_INFO.registrationNo}
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-400 mt-4 leading-relaxed max-w-sm">
+                Empowering Minds. Building Futures. Delivering comprehensive HRD Corp claimable corporate training, nationwide student recruitment, and lifelong micro-credentials.
+              </p>
+
+              <div className="mt-5 p-3 rounded-xl bg-slate-900/80 border border-amber-500/30 flex items-center gap-2.5">
+                <Award className="w-4 h-4 text-amber-400 shrink-0" />
+                <div className="text-[11px] text-slate-300 leading-tight">
+                  <span className="font-bold text-amber-300">HRD Corp Registered Provider</span>
+                  <div className="text-slate-400 font-mono">Serial No: {COMPANY_INFO.hrdCorp.certificateSerialNo}</div>
                 </div>
               </div>
-              <div>
-                <span className="font-extrabold text-lg text-white tracking-tight font-['Sora']">
-                  Spectrum<span className="text-orange-400">Malaysia</span> LMS
-                </span>
-                <span className="block text-[10px] uppercase tracking-widest text-slate-500 font-medium">
-                  Digital Learning Ecosystem
-                </span>
-              </div>
-            </a>
-
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm mb-6">
-              SpectrumMalaysia LMS is a comprehensive digital learning and programme-management platform
-              connecting learners, trainers, programmes and learning resources through one secure ecosystem.
-            </p>
-
-            <div className="flex items-center gap-2 text-xs text-slate-400">
-              <span className="font-semibold text-amber-400">Positioning:</span>
-              <span>Empowering Learning. Connecting Communities. Building Futures.</span>
             </div>
           </div>
 
-          {/* Column 2: Platform */}
-          <div>
+          {/* Column 2: Our Three Divisions */}
+          <div className="lg:col-span-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Sora'] mb-4">
-              Platform
+              Our Three Divisions
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <a href="#programmes" className="hover:text-orange-400 transition-colors">
-                  Programmes Catalogue
+                <a href="#divisions" className="hover:text-amber-400 transition-colors">
+                  01. Corporate Training (HRD Corp)
                 </a>
               </li>
               <li>
-                <a href="#learning" className="hover:text-orange-400 transition-colors">
-                  Digital Learning Vault
+                <a href="#recruitment" className="hover:text-amber-400 transition-colors">
+                  02. Student Recruitment
                 </a>
               </li>
               <li>
-                <a href="#trainers" className="hover:text-orange-400 transition-colors">
-                  Trainer Workspaces
+                <a href="#lifelong" className="hover:text-amber-400 transition-colors">
+                  03. Lifelong Learning & Micro-Credentials
                 </a>
               </li>
               <li>
-                <a href="#participants" className="hover:text-orange-400 transition-colors">
-                  Participant Portals
+                <a href="#hrd-claim" className="hover:text-amber-400 transition-colors">
+                  HRD Corp Claim Guide (5 Steps)
                 </a>
               </li>
               <li>
-                <a href="#analytics" className="hover:text-orange-400 transition-colors">
-                  Analytics & Reports
+                <a href="#programmes" className="hover:text-amber-400 transition-colors">
+                  45 Claimable Programmes Catalogue
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Information */}
-          <div>
+          {/* Column 3: Governance & Governance */}
+          <div className="lg:col-span-2">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Sora'] mb-4">
-              Information
+              Governance & Partners
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <a href="#about" className="hover:text-orange-400 transition-colors">
-                  About SpectrumMalaysia
+                <a href="#advisors" className="hover:text-amber-400 transition-colors">
+                  Board of Advisors
                 </a>
               </li>
               <li>
-                <a href="#achievements" className="hover:text-orange-400 transition-colors">
-                  Achievements & Impact
+                <a href="#partners" className="hover:text-amber-400 transition-colors">
+                  Accreditation Bodies
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-orange-400 transition-colors">
+                <a href="#partners" className="hover:text-amber-400 transition-colors">
+                  Institutional Partners
+                </a>
+              </li>
+              <li>
+                <Link href={`${LMS_URL.replace(/\/$/, "")}/verify`} className="hover:text-amber-400 transition-colors">
+                  Verify a Certificate
+                </Link>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-amber-400 transition-colors">
                   Contact & Support
                 </a>
               </li>
-              <li>
-                <Link href={LMS_URL} className="hover:text-orange-400 transition-colors">
-                  Certificate Verification
-                </Link>
-              </li>
-              <li>
-                <span className="text-slate-600">Privacy Policy (PDPA)</span>
-              </li>
-              <li>
-                <span className="text-slate-600">Terms of Service</span>
-              </li>
             </ul>
           </div>
 
-          {/* Column 4: Role-Based Portals */}
-          <div>
+          {/* Column 4: Contact & Portal Access */}
+          <div className="lg:col-span-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-['Sora'] mb-4">
-              Portal Access
+              LMS Portal & Offices
             </h4>
-            <ul className="space-y-2.5">
-              <li>
-                <Link
-                  href={LMS_URL}
-                  className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-medium"
-                >
-                  <span>Participant Login</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={LMS_URL}
-                  className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-medium"
-                >
-                  <span>Trainer Login</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={LMS_URL}
-                  className="inline-flex items-center gap-1.5 text-rose-400 hover:text-rose-300 font-medium"
-                >
-                  <span>Management Login</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </li>
-              <li className="pt-2 text-[11px] text-slate-500">
-                Authorized roles: Super Admin, Admin, Trainer, Participant, Observer.
-              </li>
-            </ul>
+
+            <div className="text-xs text-slate-400 space-y-2 mb-6">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                <span>Suite 3A.18, Block I, Setiawalk, Puchong, Selangor</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <a href={`mailto:${COMPANY_INFO.contact.email}`} className="hover:text-white">
+                  {COMPANY_INFO.contact.email}
+                </a>
+              </div>
+            </div>
+
+            <Link
+              href={LMS_URL}
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 text-white font-bold text-xs shadow-md shadow-orange-500/20 hover:shadow-orange-500/35 transition-all"
+            >
+              <span>Access Spectrum LMS Portal</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
 
-        {/* Bottom copyright and legal line */}
-        <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-slate-500">
-            &copy; {currentYear} SpectrumMalaysia LMS. All Rights Reserved. Empowering Learning. Connecting Communities.
-            Building Futures.
-          </p>
-
-          <div className="flex items-center gap-4 text-[11px] text-slate-500">
-            <span className="flex items-center gap-1 text-emerald-400">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Sovereign Cloud Data Architecture</span>
-            </span>
-            <a
-              href="#top"
-              className="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:text-white text-slate-400 transition-colors"
-              aria-label="Back to top"
-            >
-              <ArrowUp className="w-3.5 h-3.5" />
-            </a>
+        {/* Bottom copyright line */}
+        <div className="mt-14 pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div>
+            &copy; {currentYear} {COMPANY_INFO.name}. All Rights Reserved. Empowering Minds. Building Futures.
+          </div>
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <span>Pembangunan Sumber Manusia Berhad (Act 2001) Compliant</span>
           </div>
         </div>
       </div>
