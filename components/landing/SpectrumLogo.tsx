@@ -22,7 +22,7 @@ export function SpectrumLogo({
   return (
     <div className={`inline-flex items-center select-none ${className}`}>
       <img
-        src="/spectrum-logo.png"
+        src="/spectrum-logo.png?v=2"
         alt="Spectrum Edu Resources (M) Sdn. Bhd. - Empowering Minds. Building Futures."
         className={`${heightClasses} w-auto object-contain transition-transform duration-200 group-hover:scale-105`}
         loading="eager"

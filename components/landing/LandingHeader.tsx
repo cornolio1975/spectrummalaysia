@@ -126,7 +126,7 @@ export function LandingHeader() {
               aria-label="Spectrum Edu Resources (M) Sdn. Bhd."
             >
               <img
-                src="/spectrum-logo.png"
+                src="/spectrum-logo.png?v=2"
                 alt="Spectrum Edu Resources (M) Sdn. Bhd."
                 className="h-11 sm:h-12 lg:h-14 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
                 loading="eager"
@@ -328,7 +328,7 @@ export function LandingHeader() {
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <img
-                src="/spectrum-logo.png"
+                src="/spectrum-logo.png?v=2"
                 alt="Spectrum Edu Resources (M) Sdn. Bhd."
                 className="h-9 sm:h-10 w-auto object-contain"
                 loading="eager"

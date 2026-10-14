@@ -16,7 +16,7 @@ export function LandingFooter() {
             <div>
               <a href={LANDING_PAGE_URL} className="inline-block mb-4">
                 <img
-                  src="/spectrum-logo.png"
+                  src="/spectrum-logo.png?v=2"
                   alt="Spectrum Edu Resources (M) Sdn. Bhd."
                   className="h-14 sm:h-16 w-auto object-contain"
                   loading="eager"
