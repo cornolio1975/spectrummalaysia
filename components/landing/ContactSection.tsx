@@ -61,7 +61,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-200/80">
+    <section id="contact" className="py-12 sm:py-16 bg-white relative overflow-hidden border-t border-slate-200/80">
       {/* Background Soft Glows */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-red-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />

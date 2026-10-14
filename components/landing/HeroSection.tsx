@@ -7,7 +7,7 @@ import { SpectrumLogo } from "./SpectrumLogo";
 
 export function HeroSection() {
   return (
-    <section id="top" className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden bg-white">
+    <section id="top" className="relative flex items-center pt-16 pb-6 sm:pt-20 sm:pb-8 overflow-hidden bg-white">
       {/* Background Soft Glows & Accent Gradients */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-red-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-orange-500/5 rounded-full blur-[150px] pointer-events-none" />
@@ -22,12 +22,12 @@ export function HeroSection() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Column: Company Profile Headline, Identity & CTAs */}
           <div className="lg:col-span-7 flex flex-col items-start text-left z-10">
             {/* HRD Corp Registered Training Provider Kicker */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-amber-50/90 border border-amber-200/90 text-xs font-semibold text-amber-900 shadow-sm mb-6 backdrop-blur-md">
+            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-amber-50/90 border border-amber-200/90 text-xs font-semibold text-amber-900 shadow-sm mb-3 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
               <span className="tracking-wider uppercase font-['Sora'] text-[11px] text-amber-800 font-bold">
                 HRD Corp Registered Training Provider
@@ -39,7 +39,7 @@ export function HeroSection() {
             </div>
 
             {/* Official Company Title */}
-            <div className="text-xs sm:text-sm font-bold tracking-widest text-slate-500 uppercase font-['Sora'] mb-2 flex items-center gap-2">
+            <div className="text-xs sm:text-sm font-bold tracking-widest text-slate-500 uppercase font-['Sora'] mb-1.5 flex items-center gap-2">
               <span>{COMPANY_INFO.name}</span>
               <span className="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-[10px] text-slate-600 font-mono">
                 {COMPANY_INFO.registrationNo}
@@ -47,7 +47,7 @@ export function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08] font-['Sora'] mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-slate-900 tracking-tight leading-[1.12] font-['Sora'] mb-3.5">
               Empowering Minds.
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-600 to-amber-600">
@@ -56,7 +56,7 @@ export function HeroSection() {
             </h1>
 
             {/* Supporting Mission Paragraph from PDF */}
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mb-8 font-normal">
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-5 font-normal">
               A premier Malaysian education and training company delivering comprehensive{" "}
               <strong className="text-slate-900 font-semibold">Corporate Training</strong>,{" "}
               <strong className="text-slate-900 font-semibold">Student Recruitment</strong>, and{" "}
@@ -67,10 +67,10 @@ export function HeroSection() {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto mb-10">
+            <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-6">
               <a
                 href="#programmes"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 text-white font-bold text-sm shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
               >
                 <span>Explore 45 HRD Corp Courses</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -78,14 +78,14 @@ export function HeroSection() {
 
               <Link
                 href={LMS_URL}
-                className="w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base font-semibold text-slate-700 hover:text-orange-600 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3 text-sm font-semibold text-slate-700 hover:text-orange-600 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2"
               >
                 <span>Access LMS Portal</span>
               </Link>
 
               <a
                 href="#hrd-claim"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-orange-600 hover:text-orange-700 hover:underline py-2 px-1 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-orange-600 hover:text-orange-700 hover:underline py-1.5 px-1 transition-colors"
               >
                 <span>How to Claim HRD Corp Levy</span>
                 <span aria-hidden="true">&rarr;</span>
@@ -93,7 +93,7 @@ export function HeroSection() {
             </div>
 
             {/* Trust Badges Bar */}
-            <div className="pt-6 border-t border-slate-200/90 flex flex-wrap items-center gap-y-3 gap-x-6 text-xs text-slate-600">
+            <div className="pt-4 border-t border-slate-200/90 flex flex-wrap items-center gap-y-2.5 gap-x-5 text-xs text-slate-600">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 <span>100% HRD Corp Claimable</span>
@@ -115,13 +115,13 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-gradient-to-tr from-red-500/10 via-orange-500/10 to-amber-500/10 rounded-3xl blur-2xl transform -rotate-1" />
 
             {/* Showcase Card */}
-            <div className="relative rounded-3xl bg-white border border-slate-200/90 shadow-xl shadow-slate-200/60 p-6 sm:p-8 backdrop-blur-xl">
+            <div className="relative rounded-3xl bg-white border border-slate-200/90 shadow-xl shadow-slate-200/60 p-5 sm:p-6 backdrop-blur-xl">
               {/* Header inside card */}
-              <div className="flex items-center justify-between pb-5 border-b border-slate-100">
+              <div className="flex items-center justify-between pb-3.5 border-b border-slate-100">
                 <img
                   src="/spectrum-logo.png"
                   alt="Spectrum Edu Resources (M) Sdn. Bhd."
-                  className="h-12 sm:h-14 w-auto object-contain"
+                  className="h-10 sm:h-12 w-auto object-contain"
                   loading="eager"
                 />
                 <span className="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800">
@@ -130,7 +130,7 @@ export function HeroSection() {
               </div>
 
               {/* Photo Showcase of Authentic Corporate Training in Malaysia */}
-              <div className="relative mt-5 h-48 sm:h-52 w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm group">
+              <div className="relative mt-4 h-44 sm:h-48 w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm group">
                 <Image
                   src="/images/hero-training.jpg"
                   alt="Malaysian adult learners and professional corporate trainer in modern classroom workshop"

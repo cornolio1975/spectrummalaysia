@@ -41,14 +41,14 @@ export function HrdClaimGuideSection() {
   ];
 
   return (
-    <section id="hrd-claim" className="py-24 bg-white relative overflow-hidden border-t border-slate-200/80">
+    <section id="hrd-claim" className="py-12 sm:py-16 bg-white relative overflow-hidden border-t border-slate-200/80">
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-bold text-amber-800 uppercase tracking-widest mb-3">
             <ShieldCheck className="w-3.5 h-3.5 text-amber-600" />
             <span>Pembangunan Sumber Manusia Berhad (Act 2001)</span>
@@ -62,7 +62,7 @@ export function HrdClaimGuideSection() {
         </div>
 
         {/* Official Employer Benefits Banner */}
-        <div className="p-8 rounded-3xl bg-slate-50/80 border border-slate-200/90 shadow-md mb-16">
+        <div className="p-6 sm:p-8 rounded-3xl bg-slate-50/80 border border-slate-200/90 shadow-md mb-10 sm:mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 pb-6 lg:pb-0 lg:pr-8">
               <span className="text-xs font-bold uppercase tracking-widest text-orange-600 font-['Sora']">
@@ -117,8 +117,8 @@ export function HrdClaimGuideSection() {
         </div>
 
         {/* The 5-Step Process Cards */}
-        <div className="mb-16">
-          <div className="text-center mb-8">
+        <div className="mb-10 sm:mb-12">
+          <div className="text-center mb-6 sm:mb-8">
             <h3 className="text-2xl font-bold text-slate-900 font-['Sora']">
               The 5-Step HRD Corp Claim Roadmap
             </h3>

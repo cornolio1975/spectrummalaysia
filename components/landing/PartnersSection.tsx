@@ -3,10 +3,10 @@ import { ShieldCheck, Award, Building2 } from "lucide-react";
 
 export function PartnersSection() {
   return (
-    <section id="partners" className="py-24 bg-white border-t border-slate-200/80 relative">
+    <section id="partners" className="py-12 sm:py-16 bg-white border-t border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Accreditation & Awarding Bodies */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-orange-600 font-['Sora']">
             National Recognition & Statutory Bodies
           </span>
@@ -19,7 +19,7 @@ export function PartnersSection() {
         </div>
 
         {/* Accreditation Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 mb-20">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 mb-10 sm:mb-12">
           {ACCREDITATIONS.map((partner) => (
             <div
               key={partner.name}

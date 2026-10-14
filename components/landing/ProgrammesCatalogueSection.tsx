@@ -207,14 +207,14 @@ export function ProgrammesCatalogueSection() {
   }, [selectedCategory]);
 
   return (
-    <section id="programmes" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-200/80">
+    <section id="programmes" className="py-12 sm:py-16 bg-white relative overflow-hidden border-t border-slate-200/80">
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-red-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-bold text-amber-800 uppercase tracking-widest mb-3">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
@@ -245,7 +245,7 @@ export function ProgrammesCatalogueSection() {
         </div>
 
         {/* 9 Category Pills Filter */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-thin scrollbar-thumb-slate-200">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-6 scrollbar-thin scrollbar-thumb-slate-200">
           <button
             onClick={() => setSelectedCategory("all")}
             className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all font-['Sora'] flex items-center gap-1.5 ${

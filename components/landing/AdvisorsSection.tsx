@@ -3,13 +3,13 @@ import { BOARD_OF_ADVISORS } from "@/lib/spectrum-profile-data";
 
 export function AdvisorsSection() {
   return (
-    <section id="advisors" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-200/80">
+    <section id="advisors" className="py-12 sm:py-16 bg-white relative overflow-hidden border-t border-slate-200/80">
       {/* Background Soft Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-red-500/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-bold text-amber-800 uppercase tracking-widest mb-3">
             <GraduationCap className="w-3.5 h-3.5 text-amber-600" />
             <span>Academic Leadership & Governance</span>
