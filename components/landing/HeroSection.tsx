@@ -49,21 +49,20 @@ export function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 tracking-tight leading-[1.12] font-['Sora'] mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-[58px] xl:text-[64px] font-black text-slate-900 tracking-tight leading-[1.08] font-['Sora'] mt-2.5 mb-6">
               Empowering Minds.
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-600 to-amber-600">
+              <span className="block mt-1 sm:mt-2 text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-600 to-amber-600">
                 Building Futures.
               </span>
             </h1>
 
             {/* Supporting Mission Paragraph from PDF */}
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-6 font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mb-7 font-normal">
               A premier Malaysian education and training company delivering comprehensive{" "}
               <strong className="text-slate-900 font-semibold">Corporate Training</strong>,{" "}
               <strong className="text-slate-900 font-semibold">Student Recruitment</strong>, and{" "}
               <strong className="text-slate-900 font-semibold">Lifelong Learning</strong>.{" "}
-              <span className="text-orange-700 font-medium italic block mt-1">
+              <span className="text-orange-700 font-medium italic block mt-1.5">
                 Our mission: to bridge the gap between education and professional success.
               </span>
             </p>
