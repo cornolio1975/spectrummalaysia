@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Globe, Users, Award, Briefcase, CheckCircle2, MapPin, Building, GraduationCap, ArrowRight } from "lucide-react";
 import { RECRUITMENT_REGIONS, COMPANY_INFO } from "@/lib/spectrum-profile-data";
 
@@ -105,18 +106,30 @@ export function StudentRecruitmentSection() {
             ))}
           </div>
 
-          {/* College Management Pedigree Card */}
-          <div className="p-5 rounded-2xl bg-gradient-to-r from-red-950/40 via-orange-950/30 to-slate-900 border border-orange-500/30 flex items-start gap-4">
-            <div className="p-3 rounded-xl bg-orange-500/20 text-orange-400 shrink-0 mt-0.5">
-              <Building className="w-5 h-5" />
+          {/* College Management Pedigree Card with Photo */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 rounded-2xl bg-gradient-to-r from-red-950/40 via-orange-950/30 to-slate-900 border border-orange-500/30 overflow-hidden shadow-lg">
+            <div className="lg:col-span-8 p-6 sm:p-7 flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-orange-500/20 text-orange-400 shrink-0 mt-0.5">
+                <Building className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-sm sm:text-base font-bold text-white font-['Sora']">
+                  Institutional College Operations Pedigree
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
+                  Beyond student recruitment, Spectrum has managed and operated several private colleges in Malaysia as part of its core business model — possessing deep regulatory, MQA accreditation, and campus administration expertise.
+                </p>
+              </div>
             </div>
-            <div>
-              <h4 className="text-sm sm:text-base font-bold text-white font-['Sora']">
-                Institutional College Operations Pedigree
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                Beyond student recruitment, Spectrum has managed and operated several private colleges in Malaysia as part of its core business model — possessing deep regulatory, MQA accreditation, and campus administration expertise.
-              </p>
+            <div className="lg:col-span-4 relative min-h-[160px] w-full border-t lg:border-t-0 lg:border-l border-orange-500/20 bg-slate-950">
+              <Image
+                src="/images/student-recruitment.jpg"
+                alt="Institutional student counseling and university recruitment"
+                fill
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-slate-950/70 via-transparent to-transparent" />
             </div>
           </div>
         </div>

@@ -1,12 +1,25 @@
+import Image from "next/image";
 import { ArrowRight, Briefcase, Globe, Award, CheckCircle2 } from "lucide-react";
 import { THREE_DIVISIONS } from "@/lib/spectrum-profile-data";
 
 export function DivisionsSection() {
   const divisionIcons = [Briefcase, Globe, Award];
-  const divisionGradients = [
-    "from-red-600 via-orange-500 to-amber-500",
-    "from-orange-500 via-amber-500 to-yellow-500",
-    "from-amber-500 via-emerald-500 to-teal-500",
+  const divisionImages = [
+    {
+      src: "/images/corporate-training.jpg",
+      alt: "Corporate Training & HRD Corp Workshops",
+      tag: "HRD Corp Claimable",
+    },
+    {
+      src: "/images/student-recruitment.jpg",
+      alt: "Student Recruitment & Higher Education Counsel",
+      tag: "Higher Education Hub",
+    },
+    {
+      src: "/images/lifelong-learning.jpg",
+      alt: "Lifelong Learning & TVET Micro-credentials",
+      tag: "MQA / JPK Accredited",
+    },
   ];
 
   return (
@@ -31,21 +44,40 @@ export function DivisionsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {THREE_DIVISIONS.map((division, idx) => {
             const Icon = divisionIcons[idx] || Briefcase;
-            const gradient = divisionGradients[idx];
+            const imgMeta = divisionImages[idx] || divisionImages[0];
 
             return (
               <div
                 key={division.number}
-                className="relative rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl group"
+                className="relative rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl group overflow-hidden"
               >
-                {/* Top Number & Icon */}
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400 font-['Sora']">
-                      {division.number}
-                    </span>
-                    <div className="w-12 h-12 rounded-2xl bg-slate-950 border border-slate-800 group-hover:border-amber-500/40 flex items-center justify-center text-amber-400 transition-colors">
-                      <Icon className="w-6 h-6" />
+                  {/* Photo Banner with Badges and Overlay */}
+                  <div className="relative h-52 w-full overflow-hidden rounded-2xl mb-6 border border-slate-800/80 bg-slate-950">
+                    <Image
+                      src={imgMeta.src}
+                      alt={imgMeta.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/20" />
+
+                    {/* Top Overlaid Badge */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 rounded-lg bg-slate-950/85 backdrop-blur-md border border-slate-700/80 text-[10px] font-bold text-amber-300 font-['Sora'] shadow-sm">
+                        {imgMeta.tag}
+                      </span>
+                    </div>
+
+                    {/* Bottom Division Number & Floating Icon */}
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+                      <span className="text-3xl font-extrabold text-white drop-shadow-md font-['Sora'] tracking-tight">
+                        {division.number}
+                      </span>
+                      <div className="w-10 h-10 rounded-xl bg-slate-950/85 backdrop-blur-md border border-slate-700/80 flex items-center justify-center text-amber-400 group-hover:text-amber-300 transition-colors shadow-lg">
+                        <Icon className="w-5 h-5" />
+                      </div>
                     </div>
                   </div>
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Award, Layers, Users, TrendingUp, CheckCircle2, ShieldCheck, HeartHandshake, Zap, ArrowRight } from "lucide-react";
 import { LMS_URL } from "@/lib/config";
 import Link from "next/link";
@@ -140,8 +141,28 @@ export function LifelongLearningSection() {
           </div>
 
           {/* Right: National Government Programmes */}
-          <div className="lg:col-span-5 p-8 rounded-3xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 border border-amber-500/30 shadow-2xl flex flex-col justify-between">
+          <div className="lg:col-span-5 p-8 rounded-3xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 border border-amber-500/30 shadow-2xl flex flex-col justify-between overflow-hidden">
             <div>
+              {/* Photo Banner */}
+              <div className="relative h-44 w-full rounded-2xl overflow-hidden mb-6 border border-slate-800 bg-slate-950">
+                <Image
+                  src="/images/lifelong-learning.jpg"
+                  alt="Lifelong Learning & TVET Micro-credentials Session"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                  <span className="text-xs font-bold text-amber-300 px-2.5 py-1 rounded-lg bg-slate-950/85 backdrop-blur-sm border border-slate-700/80">
+                    MQA & JPK Platform
+                  </span>
+                  <span className="text-[11px] font-semibold text-slate-300 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-sm border border-white/10">
+                    Since 2012
+                  </span>
+                </div>
+              </div>
+
               <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 font-['Sora']">
                 Track Record as a Training Provider
               </span>
