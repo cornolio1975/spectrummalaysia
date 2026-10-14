@@ -45,7 +45,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-orange-500 selection:text-white font-['Plus_Jakarta_Sans'] antialiased">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-orange-500 selection:text-white font-['Plus_Jakarta_Sans'] antialiased">
       {/* JSON-LD Structured Data */}
       <Script
         id="schema-jsonld"

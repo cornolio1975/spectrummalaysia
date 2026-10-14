@@ -63,7 +63,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased selection:bg-amber-500 selection:text-white">{children}</body>
+      <body className="bg-white text-slate-900 antialiased selection:bg-amber-500 selection:text-white">{children}</body>
     </html>
   );
 }

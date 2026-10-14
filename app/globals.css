@@ -16,12 +16,12 @@
   --secondary-light:   #14b8a6;
 
   /* Neutral surface */
-  --surface:           #f0f4f8;
-  --surface-alt:       #e8eef5;
+  --surface:           #ffffff;
+  --surface-alt:       #f8fafc;
   --card:              #ffffff;
   --card-hover:        #f8fafc;
-  --border:            #dde3ec;
-  --border-light:      #eef1f6;
+  --border:            #e2e8f0;
+  --border-light:      #f1f5f9;
 
   /* Text */
   --text-primary:      #0f172a;

@@ -68,25 +68,18 @@ export default function LoginPage() {
             marginBottom: "48px",
           }}>
             <div style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "12px",
-              background: "rgba(255,255,255,0.15)",
-              display: "flex",
+              background: "#ffffff",
+              padding: "8px 16px",
+              borderRadius: "14px",
+              boxShadow: "0 4px 14px rgba(0,0,0,0.12)",
+              display: "inline-flex",
               alignItems: "center",
-              justifyContent: "center",
-              fontSize: "22px",
-              fontWeight: "800",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255,255,255,0.2)",
-            }}>N</div>
-            <div>
-              <div style={{ fontSize: "1.1rem", fontWeight: "700", letterSpacing: "-0.01em" }}>
-                SpectrumMY LMS
-              </div>
-              <div style={{ fontSize: "0.72rem", opacity: 0.7, letterSpacing: "0.05em" }}>
-                PROGRAMME & LEARNING MANAGEMENT
-              </div>
+            }}>
+              <img
+                src="/spectrum-logo.png"
+                alt="Spectrum Edu Resources (M) Sdn. Bhd."
+                style={{ height: "44px", width: "auto", objectFit: "contain" }}
+              />
             </div>
           </div>
 
