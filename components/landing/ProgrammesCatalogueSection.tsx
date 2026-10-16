@@ -433,12 +433,12 @@ export function ProgrammesCatalogueSection() {
                 {isPortfolioExpanded ? (
                   <>
                     <ChevronUp className="w-4 h-4" />
-                    <span>Collapse Directory ↑</span>
+                    <span>Collapse Portfolio ↑</span>
                   </>
                 ) : (
                   <>
                     <ChevronDown className="w-4 h-4" />
-                    <span>Expand All 45 Programmes ↓</span>
+                    <span>Explore 9 Disciplines Portfolio (45 Courses) ↓</span>
                   </>
                 )}
               </button>
@@ -446,48 +446,68 @@ export function ProgrammesCatalogueSection() {
 
             {!isPortfolioExpanded ? (
               /* COMPACT VIEW (Default on Page Load): Clean 9-Tile Grid with zero course clutter */
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {HRD_PROGRAMME_CATALOGUE.map((category) => {
-                  const cfg = CATEGORY_CONFIG[category.id] || CATEGORY_CONFIG.leadership;
-                  const Icon = cfg.icon;
+              <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {HRD_PROGRAMME_CATALOGUE.map((category) => {
+                    const cfg = CATEGORY_CONFIG[category.id] || CATEGORY_CONFIG.leadership;
+                    const Icon = cfg.icon;
 
-                  return (
-                    <div
-                      key={category.id}
-                      onClick={() => setSelectedCategory(category.id)}
-                      className="rounded-2xl bg-white border border-slate-200/90 hover:border-orange-400 p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 shadow-xs hover:shadow-lg group cursor-pointer"
-                    >
-                      <div>
-                        <div className="flex items-start justify-between gap-3 mb-3">
-                          <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shadow-xs ${cfg.badgeColor}`}>
-                            <Icon className="w-5 h-5" />
+                    return (
+                      <div
+                        key={category.id}
+                        onClick={() => setSelectedCategory(category.id)}
+                        className="rounded-2xl bg-white border border-slate-200/90 hover:border-orange-400 p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 shadow-xs hover:shadow-lg group cursor-pointer"
+                      >
+                        <div>
+                          <div className="flex items-start justify-between gap-3 mb-3">
+                            <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shadow-xs ${cfg.badgeColor}`}>
+                              <Icon className="w-5 h-5" />
+                            </div>
+                            <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800">
+                              100% Claimable
+                            </span>
                           </div>
-                          <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800">
-                            100% Claimable
+
+                          <h4 className="text-base font-bold text-slate-900 font-['Sora'] group-hover:text-orange-600 transition-colors mb-1.5">
+                            {category.name}
+                          </h4>
+
+                          <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 mb-4">
+                            {category.description}
+                          </p>
+                        </div>
+
+                        <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
+                          <span className="text-slate-500 font-normal">
+                            <span className="font-bold text-slate-800">{category.count}</span> Programmes
                           </span>
-                        </div>
-
-                        <h4 className="text-base font-bold text-slate-900 font-['Sora'] group-hover:text-orange-600 transition-colors mb-1.5">
-                          {category.name}
-                        </h4>
-
-                        <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 mb-4">
-                          {category.description}
-                        </p>
-                      </div>
-
-                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
-                        <span className="text-slate-500 font-normal">
-                          <span className="font-bold text-slate-800">{category.count}</span> Programmes
-                        </span>
-                        <div className="inline-flex items-center gap-1">
-                          <span>View Courses</span>
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                          <div className="inline-flex items-center gap-1">
+                            <span>View 5 Courses</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                          </div>
                         </div>
                       </div>
+                    );
+                  })}
+                </div>
+
+                {/* Prominent Callout Banner with Explore Button */}
+                <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-orange-50 via-amber-50/60 to-orange-50 border border-orange-200/90 shadow-sm">
+                  <div>
+                    <div className="text-sm font-bold text-slate-900 font-['Sora']">
+                      Want to inspect all 45 course modules at once?
                     </div>
-                  );
-                })}
+                    <div className="text-xs text-slate-600 mt-0.5">
+                      Expand the full directory to view durations, outlines, and instant syllabus previews.
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setIsPortfolioExpanded(true)}
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-red-600 via-orange-600 to-amber-600 hover:from-red-700 hover:to-orange-700 text-white text-xs sm:text-sm font-bold font-['Sora'] shadow-md hover:shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] shrink-0"
+                  >
+                    <span>Explore 9 Disciplines Portfolio (45 Courses) ↓</span>
+                  </button>
+                </div>
               </div>
             ) : (
               /* EXPANDED VIEW: Complete 3x3 Grid with 5 Sub-Course Outlines */
