@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { LMS_URL } from "@/lib/config";
 
 export const revalidate = 60; // Cache for 60 seconds
 
@@ -33,7 +34,7 @@ export async function GET() {
       return count || 0;
     }
 
-    const lmsBaseUrl = process.env.NEXT_PUBLIC_LMS_URL || "https://lms.spectrummalaysia.org/";
+    const lmsBaseUrl = LMS_URL;
 
     // 2. Fetch the aggregate counts ONLY for published metrics
     const [
