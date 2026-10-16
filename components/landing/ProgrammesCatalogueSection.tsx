@@ -24,6 +24,9 @@ import {
   Award,
   Briefcase,
   Layers,
+  ArrowLeft,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { HRD_PROGRAMME_CATALOGUE, CourseItem } from "@/lib/spectrum-profile-data";
 
@@ -176,6 +179,7 @@ export function ProgrammesCatalogueSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeCourse, setActiveCourse] = useState<CourseItem | null>(null);
+  const [isPortfolioExpanded, setIsPortfolioExpanded] = useState<boolean>(false);
 
   // Flatten all 45 courses, ensuring categoryId is preserved
   const allCourses = useMemo(() => {
@@ -261,24 +265,27 @@ export function ProgrammesCatalogueSection() {
           <button
             onClick={() => setSelectedCategory("all")}
             className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all font-['Sora'] flex items-center gap-1.5 ${
-              selectedCategory === "all"
+              selectedCategory === "all" && !searchQuery.trim()
                 ? "bg-gradient-to-r from-red-600 to-orange-500 text-white shadow-md shadow-orange-500/20"
                 : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200 shadow-sm"
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>All 45 Programmes</span>
+            <span>9 Strategic Disciplines</span>
           </button>
 
           {HRD_PROGRAMME_CATALOGUE.map((category) => {
             const cfg = CATEGORY_CONFIG[category.id] || CATEGORY_CONFIG.leadership;
             const Icon = cfg.icon;
-            const isSelected = selectedCategory === category.id;
+            const isSelected = selectedCategory === category.id && !searchQuery.trim();
 
             return (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
+                onClick={() => {
+                  setSelectedCategory(category.id);
+                  setSearchQuery("");
+                }}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all font-['Sora'] flex items-center gap-1.5 ${
                   isSelected
                     ? "bg-gradient-to-r from-red-600 to-orange-500 text-white shadow-md shadow-orange-500/20"
@@ -299,159 +306,430 @@ export function ProgrammesCatalogueSection() {
           })}
         </div>
 
-        {/* Category Spotlight Header (When a single category is selected) */}
-        {currentCategoryData && (
-          <div className="mb-10 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center animate-fadeIn">
-            <div className="lg:col-span-7">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-[10px] font-bold uppercase tracking-wider text-orange-600 font-['Sora'] shadow-xs">
-                  Strategic Area Spotlight
-                </span>
-                <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800">
-                  {currentCategoryData.count} HRD Corp Claimable Courses
-                </span>
+        {/* SEARCH MODE: Display matching courses directly */}
+        {searchQuery.trim() ? (
+          <div>
+            <div className="flex items-center justify-between mb-6 p-4 rounded-2xl bg-orange-50 border border-orange-200">
+              <div className="text-xs sm:text-sm font-semibold text-slate-800">
+                Found <span className="font-bold text-orange-600">{filteredCourses.length}</span> matching {filteredCourses.length === 1 ? "programme" : "programmes"} for &ldquo;<span className="italic font-bold text-slate-900">{searchQuery}</span>&rdquo; across all 45 courses
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-['Sora'] mb-2">
-                {currentCategoryData.name}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                {currentCategoryData.description}
-              </p>
-              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-700">
-                <div className="flex items-center gap-1.5 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>100% HRD Corp Levy Claimable</span>
-                </div>
-                <div className="flex items-center gap-1.5 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>In-House & Public Delivery</span>
-                </div>
-                <div className="flex items-center gap-1.5 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>Certified TTT Trainers</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Single Curated Category Showcase Image */}
-            <div className="lg:col-span-5 relative h-48 sm:h-52 w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
-              <Image
-                src={CATEGORY_CONFIG[currentCategoryData.id]?.image || "/images/cat-leadership.jpg"}
-                alt={`${currentCategoryData.name} training session`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-[11px] font-medium">
-                <span className="bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded border border-white/20">
-                  Professional Curriculum
-                </span>
-                <span className="font-semibold text-orange-200">
-                  {currentCategoryData.count} Modules Available
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Executive Portfolio Strip (When "All 45 Programmes" is selected) */}
-        {!currentCategoryData && !searchQuery.trim() && (
-          <div className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="text-2xl font-extrabold text-slate-900 font-['Sora']">45</div>
-              <div className="text-xs font-semibold text-slate-600 mt-0.5">Approved Courses</div>
-              <div className="text-[11px] text-slate-400 mt-1">100% Levy Claimable</div>
-            </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="text-2xl font-extrabold text-slate-900 font-['Sora']">9</div>
-              <div className="text-xs font-semibold text-slate-600 mt-0.5">Strategic Disciplines</div>
-              <div className="text-[11px] text-slate-400 mt-1">Leadership to OSH & ESG</div>
-            </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="text-2xl font-extrabold text-slate-900 font-['Sora']">3</div>
-              <div className="text-xs font-semibold text-slate-600 mt-0.5">Delivery Formats</div>
-              <div className="text-[11px] text-slate-400 mt-1">In-House, Public, Online</div>
-            </div>
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="text-2xl font-extrabold text-slate-900 font-['Sora']">100%</div>
-              <div className="text-xs font-semibold text-slate-600 mt-0.5">TTT Certified</div>
-              <div className="text-[11px] text-slate-400 mt-1">Industry-Experienced Faculty</div>
-            </div>
-          </div>
-        )}
-
-        {/* Clean, Executive Programme Cards Grid (Zero Repeated Photo Fatigue) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCourses.map((course) => {
-            const cfg =
-              CATEGORY_CONFIG[course.category] ||
-              (course.categoryId ? CATEGORY_CONFIG[course.categoryId] : null) ||
-              CATEGORY_CONFIG.leadership;
-            const Icon = cfg.icon;
-
-            return (
-              <div
-                key={course.id}
-                className="rounded-3xl bg-white border border-slate-200/90 hover:border-orange-300 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl group cursor-pointer"
-                onClick={() => setActiveCourse(course)}
+              <button
+                onClick={() => setSearchQuery("")}
+                className="px-3 py-1 rounded-lg bg-white border border-orange-200 text-xs font-bold text-orange-700 hover:bg-orange-100 transition-colors"
               >
-                <div>
-                  {/* Card Header: Category Icon, Name & Claimable Badge */}
-                  <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-2.5">
-                      <div className={`w-9 h-9 rounded-xl border flex items-center justify-center shadow-xs ${cfg.badgeColor}`}>
-                        <Icon className="w-4 h-4" />
+                Clear Search
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCourses.map((course) => {
+                const cfg =
+                  CATEGORY_CONFIG[course.category] ||
+                  (course.categoryId ? CATEGORY_CONFIG[course.categoryId] : null) ||
+                  CATEGORY_CONFIG.leadership;
+                const Icon = cfg.icon;
+
+                return (
+                  <div
+                    key={course.id}
+                    className="rounded-3xl bg-white border border-slate-200/90 hover:border-orange-300 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl group cursor-pointer"
+                    onClick={() => setActiveCourse(course)}
+                  >
+                    <div>
+                      <div className="flex items-start justify-between gap-3 mb-4">
+                        <div className="flex items-center gap-2.5">
+                          <div className={`w-9 h-9 rounded-xl border flex items-center justify-center shadow-xs ${cfg.badgeColor}`}>
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block font-['Sora']">
+                              {course.category}
+                            </span>
+                          </div>
+                        </div>
+                        <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800 flex items-center gap-1 shrink-0">
+                          <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                          <span>100% Claimable</span>
+                        </span>
                       </div>
-                      <div>
-                        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block font-['Sora']">
-                          {course.category}
+
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 font-['Sora'] leading-snug group-hover:text-orange-600 transition-colors mb-2.5">
+                        {course.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5 line-clamp-2">
+                        {course.description}
+                      </p>
+
+                      <div className="flex flex-wrap items-center gap-2 mb-4">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-mono font-medium">
+                          <Clock className="w-3 h-3 text-slate-500" />
+                          <span>{course.duration}</span>
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
+                          In-House
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
+                          Public
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
+                          Online
                         </span>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800 flex items-center gap-1 shrink-0">
-                      <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                      <span>100% Claimable</span>
-                    </span>
+
+                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-orange-600 group-hover:text-orange-700">
+                      <span>View Syllabus & Outline</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : selectedCategory === "all" ? (
+          /* MODE 1: EXECUTIVE 9 STRATEGIC DISCIPLINES HUB */
+          <div>
+            {/* Executive Portfolio Strip */}
+            <div className="mb-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="text-2xl font-extrabold text-slate-900 font-['Sora']">45</div>
+                <div className="text-xs font-semibold text-slate-600 mt-0.5">Approved Courses</div>
+                <div className="text-[11px] text-slate-400 mt-1">100% Levy Claimable</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="text-2xl font-extrabold text-slate-900 font-['Sora']">9</div>
+                <div className="text-xs font-semibold text-slate-600 mt-0.5">Strategic Disciplines</div>
+                <div className="text-[11px] text-slate-400 mt-1">Leadership to OSH & ESG</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="text-2xl font-extrabold text-slate-900 font-['Sora']">3</div>
+                <div className="text-xs font-semibold text-slate-600 mt-0.5">Delivery Formats</div>
+                <div className="text-[11px] text-slate-400 mt-1">In-House, Public, Online</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="text-2xl font-extrabold text-slate-900 font-['Sora']">100%</div>
+                <div className="text-xs font-semibold text-slate-600 mt-0.5">TTT Certified</div>
+                <div className="text-[11px] text-slate-400 mt-1">Industry-Experienced Faculty</div>
+              </div>
+            </div>
 
-                  {/* Course Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 font-['Sora'] leading-snug group-hover:text-orange-600 transition-colors mb-2.5">
-                    {course.title}
-                  </h3>
+            {/* Hub Header with Toggle Action */}
+            <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-r from-slate-50 via-white to-orange-50/40 border border-slate-200">
+              <div>
+                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 font-['Sora']">
+                  9 Strategic Disciplines Portfolio
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  {isPortfolioExpanded
+                    ? "Showing all 9 disciplines with complete module outlines. Click any course to preview syllabus."
+                    : "Select any discipline below to view its 5 accredited modules, or expand the complete directory."}
+                </p>
+              </div>
+              <button
+                onClick={() => setIsPortfolioExpanded(!isPortfolioExpanded)}
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold font-['Sora'] transition-all shadow-sm hover:shadow-md shrink-0"
+              >
+                {isPortfolioExpanded ? (
+                  <>
+                    <ChevronUp className="w-4 h-4" />
+                    <span>Collapse Directory ↑</span>
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-4 h-4" />
+                    <span>Expand All 45 Programmes ↓</span>
+                  </>
+                )}
+              </button>
+            </div>
 
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5 line-clamp-2">
-                    {course.description}
-                  </p>
+            {!isPortfolioExpanded ? (
+              /* COMPACT VIEW (Default on Page Load): Clean 9-Tile Grid with zero course clutter */
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {HRD_PROGRAMME_CATALOGUE.map((category) => {
+                  const cfg = CATEGORY_CONFIG[category.id] || CATEGORY_CONFIG.leadership;
+                  const Icon = cfg.icon;
 
-                  {/* Metadata: Duration & Delivery Mode */}
-                  <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-mono font-medium">
-                      <Clock className="w-3 h-3 text-slate-500" />
-                      <span>{course.duration}</span>
-                    </span>
-                    <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
-                      In-House
-                    </span>
-                    <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
-                      Public
-                    </span>
-                    <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
-                      Online
-                    </span>
-                  </div>
+                  return (
+                    <div
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className="rounded-2xl bg-white border border-slate-200/90 hover:border-orange-400 p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 shadow-xs hover:shadow-lg group cursor-pointer"
+                    >
+                      <div>
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shadow-xs ${cfg.badgeColor}`}>
+                            <Icon className="w-5 h-5" />
+                          </div>
+                          <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800">
+                            100% Claimable
+                          </span>
+                        </div>
+
+                        <h4 className="text-base font-bold text-slate-900 font-['Sora'] group-hover:text-orange-600 transition-colors mb-1.5">
+                          {category.name}
+                        </h4>
+
+                        <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 mb-4">
+                          {category.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
+                        <span className="text-slate-500 font-normal">
+                          <span className="font-bold text-slate-800">{category.count}</span> Programmes
+                        </span>
+                        <div className="inline-flex items-center gap-1">
+                          <span>View Courses</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              /* EXPANDED VIEW: Complete 3x3 Grid with 5 Sub-Course Outlines */
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {HRD_PROGRAMME_CATALOGUE.map((category) => {
+                    const cfg = CATEGORY_CONFIG[category.id] || CATEGORY_CONFIG.leadership;
+                    const Icon = cfg.icon;
+
+                    return (
+                      <div
+                        key={category.id}
+                        onClick={() => setSelectedCategory(category.id)}
+                        className="rounded-3xl bg-white border border-slate-200/90 hover:border-orange-400 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl group cursor-pointer"
+                      >
+                        <div>
+                          {/* Discipline Header: Icon & Count Badge */}
+                          <div className="flex items-start justify-between gap-3 mb-4">
+                            <div className="flex items-center gap-3">
+                              <div className={`w-11 h-11 rounded-2xl border flex items-center justify-center shadow-xs ${cfg.badgeColor}`}>
+                                <Icon className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-['Sora'] block">
+                                  Discipline Pillar
+                                </span>
+                                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/80">
+                                  100% Claimable
+                                </span>
+                              </div>
+                            </div>
+                            <span className="px-2.5 py-1 rounded-full bg-slate-100 text-[11px] font-bold text-slate-700 font-mono">
+                              {category.count} Programmes
+                            </span>
+                          </div>
+
+                          {/* Discipline Name */}
+                          <h4 className="text-base sm:text-lg font-bold text-slate-900 font-['Sora'] group-hover:text-orange-600 transition-colors mb-2">
+                            {category.name}
+                          </h4>
+
+                          {/* Description */}
+                          <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-2">
+                            {category.description}
+                          </p>
+
+                          {/* 5 Programmes Quick Listing */}
+                          <div className="space-y-1.5 pt-3.5 border-t border-slate-100">
+                            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-['Sora'] mb-1">
+                              Included Programmes:
+                            </div>
+                            {category.courses.map((course, idx) => (
+                              <div
+                                key={course.id}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setActiveCourse(course);
+                                }}
+                                className="flex items-center justify-between text-xs py-1.5 px-2 rounded-lg bg-slate-50/70 hover:bg-orange-50 hover:text-orange-900 border border-transparent hover:border-orange-200 transition-colors group/item"
+                                title="Click to view course outline & syllabus"
+                              >
+                                <span className="truncate pr-2 font-medium text-slate-700 group-item:text-orange-700">
+                                  <span className="text-slate-400 font-mono text-[10px] mr-1.5">{idx + 1}.</span>
+                                  {course.title}
+                                </span>
+                                <span className="text-[10px] font-mono font-semibold text-slate-500 shrink-0 bg-white px-1.5 py-0.5 rounded border border-slate-200/70">
+                                  {course.duration}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Card Footer */}
+                        <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
+                          <span>Explore 5 Courses Deep-Dive</span>
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
 
-                {/* Card Footer: Click to View Details */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-orange-600 group-hover:text-orange-700">
-                  <span>View Syllabus & Outline</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {/* Bottom Collapse Button */}
+                <div className="flex justify-center pt-4">
+                  <button
+                    onClick={() => setIsPortfolioExpanded(false)}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold font-['Sora'] transition-colors"
+                  >
+                    <ChevronUp className="w-4 h-4" />
+                    <span>Collapse 45 Programmes Directory ↑</span>
+                  </button>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            )}
+          </div>
+        ) : (
+          /* MODE 2: FOCUSED 5-COURSE DISCIPLINE VIEW (When a single category is selected) */
+          <div>
+            {/* Top Navigation: Back to All 9 Disciplines */}
+            <div className="flex items-center justify-between mb-6">
+              <button
+                onClick={() => setSelectedCategory("all")}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 transition-colors font-['Sora']"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>← Back to All 9 Strategic Disciplines</span>
+              </button>
+              <div className="text-xs font-semibold text-slate-500 font-mono">
+                Viewing 5 of 45 Courses
+              </div>
+            </div>
+
+            {/* Strategic Area Spotlight Header */}
+            {currentCategoryData && (
+              <div className="mb-8 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center animate-fadeIn">
+                <div className="lg:col-span-7">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-[10px] font-bold uppercase tracking-wider text-orange-600 font-['Sora'] shadow-xs">
+                      Strategic Area Spotlight
+                    </span>
+                    <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800">
+                      {currentCategoryData.count} HRD Corp Claimable Courses
+                    </span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-['Sora'] mb-2">
+                    {currentCategoryData.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                    {currentCategoryData.description}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-slate-700">
+                    <div className="flex items-center gap-1.5 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <span>100% HRD Corp Levy Claimable</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <span>In-House & Public Delivery</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <span>Certified TTT Trainers</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Single Curated Category Showcase Image */}
+                <div className="lg:col-span-5 relative h-48 sm:h-52 w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
+                  <Image
+                    src={CATEGORY_CONFIG[currentCategoryData.id]?.image || "/images/cat-leadership.jpg"}
+                    alt={`${currentCategoryData.name} training session`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-[11px] font-medium">
+                    <span className="bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded border border-white/20">
+                      Professional Curriculum
+                    </span>
+                    <span className="font-semibold text-orange-200">
+                      {currentCategoryData.count} Modules Available
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Exactly the 5 relevant course cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCourses.map((course) => {
+                const cfg =
+                  CATEGORY_CONFIG[course.category] ||
+                  (course.categoryId ? CATEGORY_CONFIG[course.categoryId] : null) ||
+                  CATEGORY_CONFIG.leadership;
+                const Icon = cfg.icon;
+
+                return (
+                  <div
+                    key={course.id}
+                    className="rounded-3xl bg-white border border-slate-200/90 hover:border-orange-300 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl group cursor-pointer"
+                    onClick={() => setActiveCourse(course)}
+                  >
+                    <div>
+                      {/* Card Header: Category Icon, Name & Claimable Badge */}
+                      <div className="flex items-start justify-between gap-3 mb-4">
+                        <div className="flex items-center gap-2.5">
+                          <div className={`w-9 h-9 rounded-xl border flex items-center justify-center shadow-xs ${cfg.badgeColor}`}>
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block font-['Sora']">
+                              {course.category}
+                            </span>
+                          </div>
+                        </div>
+                        <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-[10px] font-bold text-emerald-800 flex items-center gap-1 shrink-0">
+                          <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                          <span>100% Claimable</span>
+                        </span>
+                      </div>
+
+                      {/* Course Title */}
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 font-['Sora'] leading-snug group-hover:text-orange-600 transition-colors mb-2.5">
+                        {course.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5 line-clamp-2">
+                        {course.description}
+                      </p>
+
+                      {/* Metadata: Duration & Delivery Mode */}
+                      <div className="flex flex-wrap items-center gap-2 mb-4">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-mono font-medium">
+                          <Clock className="w-3 h-3 text-slate-500" />
+                          <span>{course.duration}</span>
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
+                          In-House
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
+                          Public
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-semibold text-slate-600">
+                          Online
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Card Footer: Click to View Details */}
+                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-orange-600 group-hover:text-orange-700">
+                      <span>View Syllabus & Outline</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {filteredCourses.length === 0 && (
           <div className="text-center py-16 bg-slate-50 rounded-3xl border border-slate-200">
