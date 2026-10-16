@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://spectrummalaysia.org"),
   title: {
     default: "Spectrum Edu Resources (M) Sdn. Bhd. — HRD Corp Registered Training Provider",
     template: "%s | Spectrum Edu Resources",
