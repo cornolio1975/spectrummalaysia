@@ -113,8 +113,8 @@ export function LandingHeader() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/90 shadow-sm py-2.5"
-            : "bg-white/90 backdrop-blur-md border-b border-slate-200/60 py-3.5"
+            ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/90 shadow-sm py-2"
+            : "bg-white/90 backdrop-blur-md border-b border-slate-200/60 py-2.5 sm:py-3"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,13 +122,13 @@ export function LandingHeader() {
             {/* Logo */}
             <a
               href={LANDING_PAGE_URL}
-              className="flex items-center group focus:outline-none"
+              className="flex items-center group focus:outline-none shrink-0"
               aria-label="Spectrum Edu Resources (M) Sdn. Bhd."
             >
               <img
-                src="/spectrum-logo.png?v=2"
+                src="/spectrum-logo.png?v=3"
                 alt="Spectrum Edu Resources (M) Sdn. Bhd."
-                className="h-11 sm:h-12 lg:h-14 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                className="h-12 sm:h-14 lg:h-[62px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
                 loading="eager"
               />
             </a>
@@ -328,9 +328,9 @@ export function LandingHeader() {
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <img
-                src="/spectrum-logo.png?v=2"
+                src="/spectrum-logo.png?v=3"
                 alt="Spectrum Edu Resources (M) Sdn. Bhd."
-                className="h-9 sm:h-10 w-auto object-contain"
+                className="h-10 sm:h-11 w-auto object-contain"
                 loading="eager"
               />
               <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-[10px] font-bold text-amber-900">

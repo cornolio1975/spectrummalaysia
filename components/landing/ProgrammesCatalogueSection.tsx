@@ -177,18 +177,30 @@ export function ProgrammesCatalogueSection() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeCourse, setActiveCourse] = useState<CourseItem | null>(null);
 
-  // Flatten all 45 courses
+  // Flatten all 45 courses, ensuring categoryId is preserved
   const allCourses = useMemo(() => {
-    return HRD_PROGRAMME_CATALOGUE.flatMap((cat) => cat.courses);
+    return HRD_PROGRAMME_CATALOGUE.flatMap((cat) =>
+      cat.courses.map((course) => ({
+        ...course,
+        categoryId: course.categoryId || cat.id,
+      }))
+    );
   }, []);
 
   // Filtered courses based on category & search
   const filteredCourses = useMemo(() => {
+    const activeCat = HRD_PROGRAMME_CATALOGUE.find((c) => c.id === selectedCategory);
     return allCourses.filter((course) => {
       const matchesCategory =
         selectedCategory === "all" ||
+        course.categoryId === selectedCategory ||
+        (activeCat ? activeCat.courses.some((c) => c.id === course.id) : false) ||
         course.category.toLowerCase().includes(selectedCategory.toLowerCase()) ||
-        HRD_PROGRAMME_CATALOGUE.find((c) => c.id === selectedCategory)?.name === course.category;
+        activeCat?.name.toLowerCase() === course.category.toLowerCase() ||
+        (selectedCategory === "osh" &&
+          (course.category.toLowerCase().includes("safety") ||
+            course.category.toLowerCase().includes("health") ||
+            course.category.toLowerCase().includes("osh")));
 
       const matchesSearch =
         !searchQuery.trim() ||
@@ -372,7 +384,10 @@ export function ProgrammesCatalogueSection() {
         {/* Clean, Executive Programme Cards Grid (Zero Repeated Photo Fatigue) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCourses.map((course) => {
-            const cfg = CATEGORY_CONFIG[course.category] || CATEGORY_CONFIG.leadership;
+            const cfg =
+              CATEGORY_CONFIG[course.category] ||
+              (course.categoryId ? CATEGORY_CONFIG[course.categoryId] : null) ||
+              CATEGORY_CONFIG.leadership;
             const Icon = cfg.icon;
 
             return (
@@ -498,7 +513,11 @@ export function ProgrammesCatalogueSection() {
             {/* Modal Image Header */}
             <div className="relative h-48 sm:h-56 -mx-6 sm:-mx-8 -mt-6 sm:-mt-8 mb-6 overflow-hidden bg-slate-100 border-b border-slate-200">
               <Image
-                src={CATEGORY_CONFIG[activeCourse.category]?.image || "/images/cat-leadership.jpg"}
+                src={
+                  CATEGORY_CONFIG[activeCourse.category]?.image ||
+                  (activeCourse.categoryId ? CATEGORY_CONFIG[activeCourse.categoryId]?.image : null) ||
+                  "/images/cat-leadership.jpg"
+                }
                 alt={activeCourse.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 600px"

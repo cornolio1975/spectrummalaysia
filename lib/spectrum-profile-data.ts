@@ -7,6 +7,7 @@ export interface CourseItem {
   claimable: boolean;
   targetAudience?: string;
   badge?: string;
+  categoryId?: string;
 }
 
 export interface ProgrammeCategory {
@@ -344,6 +345,7 @@ export const HRD_PROGRAMME_CATALOGUE: ProgrammeCategory[] = [
         title: "OSH Awareness & HIRARC",
         duration: "2 Days",
         category: "Occupational Safety & Health",
+        categoryId: "osh",
         description: "Hazard Identification, Risk Assessment and Risk Control (HIRARC) principles and Malaysian OSHA standards.",
         claimable: true,
       },
@@ -352,6 +354,7 @@ export const HRD_PROGRAMME_CATALOGUE: ProgrammeCategory[] = [
         title: "Safety & Health Committee Effectiveness",
         duration: "1 Day",
         category: "Occupational Safety & Health",
+        categoryId: "osh",
         description: "Statutory roles of safety committees, conducting workplace audits, and managing incident investigations.",
         claimable: true,
       },
@@ -360,6 +363,7 @@ export const HRD_PROGRAMME_CATALOGUE: ProgrammeCategory[] = [
         title: "First Aid & CPR",
         duration: "1 Day",
         category: "Occupational Safety & Health",
+        categoryId: "osh",
         description: "Hands-on emergency response, CPR protocols, wound dressing, and life-saving intervention training.",
         claimable: true,
       },
@@ -368,6 +372,7 @@ export const HRD_PROGRAMME_CATALOGUE: ProgrammeCategory[] = [
         title: "Fire Safety & Emergency Response",
         duration: "1 Day",
         category: "Occupational Safety & Health",
+        categoryId: "osh",
         description: "Evacuation drills, fire extinguisher operation, emergency warden duties, and building safety protocols.",
         claimable: true,
       },
@@ -376,6 +381,7 @@ export const HRD_PROGRAMME_CATALOGUE: ProgrammeCategory[] = [
         title: "Workplace Ergonomics",
         duration: "1 Day",
         category: "Occupational Safety & Health",
+        categoryId: "osh",
         description: "Preventing musculoskeletal disorders, workstation setup, posture health, and ergonomics assessment.",
         claimable: true,
       },

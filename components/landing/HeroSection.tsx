@@ -7,7 +7,7 @@ import { SpectrumLogo } from "./SpectrumLogo";
 
 export function HeroSection() {
   return (
-    <section id="top" className="relative pt-4 pb-8 sm:pt-6 sm:pb-12 overflow-hidden bg-white">
+    <section id="top" className="relative pt-24 pb-8 sm:pt-28 sm:pb-12 lg:pt-32 overflow-hidden bg-white">
       {/* Background Soft Glows & Accent Gradients */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-red-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-orange-500/5 rounded-full blur-[150px] pointer-events-none" />
