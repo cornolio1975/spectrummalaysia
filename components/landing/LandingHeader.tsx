@@ -54,30 +54,37 @@ export function LandingHeader() {
     {
       title: "Corporate Training (HRD Corp)",
       desc: "45 Claimable public, in-house & online programmes",
-      href: "#programmes",
+      href: "/#programmes",
       icon: Briefcase,
       badge: "45 Courses",
     },
     {
       title: "HRD Corp Claim Roadmap",
       desc: "5-Step employer levy claim and TNA guide",
-      href: "#hrd-claim",
+      href: "/#hrd-claim",
       icon: FileText,
       badge: "100% Levy",
     },
     {
       title: "Student Recruitment",
       desc: "Local & international admissions into colleges",
-      href: "#recruitment",
+      href: "/#recruitment",
       icon: Globe,
       badge: "Global Network",
     },
     {
       title: "Lifelong Learning & TVET",
       desc: "MQA & JPK micro-credentials stackable to degree",
-      href: "#lifelong",
+      href: "/#lifelong",
       icon: Layers,
       badge: "MQA / JPK",
+    },
+    {
+      title: "SaaS LMS Solutions",
+      desc: "SP LMS Builder · Powered by SP Digital Systems",
+      href: "/sp-lms-builder",
+      icon: Layers,
+      badge: "Launch to Enterprise",
     },
   ];
 
@@ -85,25 +92,25 @@ export function LandingHeader() {
     {
       title: "About Spectrum",
       desc: "Company profile, core values & mission",
-      href: "#about",
+      href: "/#about",
       icon: Building2,
     },
     {
       title: "Board of Advisors",
       desc: "Academic & statutory governance council",
-      href: "#advisors",
+      href: "/#advisors",
       icon: GraduationCap,
     },
     {
       title: "Accreditation & Partners",
       desc: "HRD Corp, MQA, JPK, universities & colleges",
-      href: "#partners",
+      href: "/#partners",
       icon: Award,
     },
     {
       title: "Training Gallery",
       desc: "Program Madani & field training sessions",
-      href: "#gallery",
+      href: "/#gallery",
       icon: Users,
     },
   ];
@@ -161,7 +168,7 @@ export function LandingHeader() {
                 {openDropdown === "divisions" && (
                   <div className="absolute top-full left-0 mt-2 w-96 rounded-2xl bg-white border border-slate-200 shadow-xl p-2.5 backdrop-blur-2xl animate-fadeIn z-50">
                     <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1.5 font-['Sora'] flex items-center justify-between border-b border-slate-100 pb-2 mb-1">
-                      <span>3 Core Education Pillars</span>
+                      <span>4 Strategic Divisions</span>
                       <span className="text-orange-600 font-mono font-semibold">HRD Corp Registered</span>
                     </div>
                     {divisionsMenu.map((item) => {
@@ -200,7 +207,7 @@ export function LandingHeader() {
 
               {/* Direct Link 1: 45 HRD Catalog */}
               <a
-                href="#programmes"
+                href="/#programmes"
                 className="px-3.5 py-1.5 text-[13px] font-semibold text-slate-700 hover:text-slate-900 hover:bg-white/70 rounded-full transition-colors flex items-center gap-1.5"
               >
                 <span>45 HRD Courses</span>
@@ -211,7 +218,7 @@ export function LandingHeader() {
 
               {/* Direct Link 2: 5-Step Claim Roadmap */}
               <a
-                href="#hrd-claim"
+                href="/#hrd-claim"
                 className="px-3.5 py-1.5 text-[13px] font-semibold text-slate-700 hover:text-slate-900 hover:bg-white/70 rounded-full transition-colors"
               >
                 Claim Roadmap
@@ -274,7 +281,7 @@ export function LandingHeader() {
 
               {/* Direct Link 3: Contact */}
               <a
-                href="#contact"
+                href="/#contact"
                 className="px-3.5 py-1.5 text-[13px] font-semibold text-slate-700 hover:text-slate-900 hover:bg-white/70 rounded-full transition-colors"
               >
                 Contact
@@ -352,7 +359,7 @@ export function LandingHeader() {
               >
                 <span className="flex items-center gap-2">
                   <Briefcase className="w-4 h-4 text-orange-600" />
-                  <span>Our Three Divisions</span>
+                  <span>Our Four Divisions</span>
                 </span>
                 <ChevronDown
                   className={`w-4 h-4 text-slate-500 transition-transform ${
@@ -419,7 +426,7 @@ export function LandingHeader() {
 
             {/* Direct Links */}
             <a
-              href="#programmes"
+              href="/#programmes"
               onClick={() => setMobileMenuOpen(false)}
               className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between text-sm font-bold text-slate-900 font-['Sora'] hover:bg-slate-100"
             >
@@ -430,7 +437,7 @@ export function LandingHeader() {
             </a>
 
             <a
-              href="#hrd-claim"
+              href="/#hrd-claim"
               onClick={() => setMobileMenuOpen(false)}
               className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between text-sm font-bold text-slate-900 font-['Sora'] hover:bg-slate-100"
             >
@@ -439,7 +446,7 @@ export function LandingHeader() {
             </a>
 
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
               className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between text-sm font-bold text-slate-900 font-['Sora'] hover:bg-slate-100"
             >

@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { ArrowRight, Briefcase, Award, CheckCircle2, Sparkles, GraduationCap } from "lucide-react";
-import { THREE_DIVISIONS } from "@/lib/spectrum-profile-data";
+import { ArrowRight, Briefcase, Award, CheckCircle2, Sparkles, GraduationCap, Layers } from "lucide-react";
+import { STRATEGIC_DIVISIONS } from "@/lib/spectrum-profile-data";
 
 export function DivisionsSection() {
-  const divisionIcons = [Briefcase, GraduationCap, Award];
+  const divisionIcons = [Briefcase, GraduationCap, Award, Layers];
   const divisionMeta = [
     {
       image: "/images/division-corporate-training.jpg",
@@ -23,6 +23,12 @@ export function DivisionsSection() {
       tag: "MQA & JPK Accredited",
       tagColor: "bg-white/95 text-amber-700 border-amber-200",
     },
+    {
+      image: "/images/lms-learning-platform.jpg",
+      imageAlt: "Digital learning platform for courses and online training",
+      tag: "SP LMS Builder",
+      tagColor: "bg-white/95 text-orange-700 border-orange-200",
+    },
   ];
 
   return (
@@ -37,16 +43,16 @@ export function DivisionsSection() {
             <span>Comprehensive Education Ecosystem</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-['Sora']">
-            Our Three Strategic Divisions
+            Our Four Strategic Divisions
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mt-4 leading-relaxed">
-            Spectrum Edu Resources operates across three synchronized divisions designed to deliver professional workforce upskilling, institutional student recruitment, and continuous lifelong education.
+            Four connected services for workforce upskilling, student recruitment, lifelong education and branded learning platforms. SaaS LMS Solutions is delivered through SP LMS Builder, powered by SP Digital Systems.
           </p>
         </div>
 
-        {/* 3 Divisions Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {THREE_DIVISIONS.map((division, idx) => {
+        {/* Four divisions: two columns on larger screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {STRATEGIC_DIVISIONS.map((division, idx) => {
             const Icon = divisionIcons[idx] || Briefcase;
             const meta = divisionMeta[idx] || divisionMeta[0];
 
@@ -62,7 +68,7 @@ export function DivisionsSection() {
                       src={meta.image}
                       alt={meta.imageAlt}
                       fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-black/10 pointer-events-none" />
@@ -116,7 +122,7 @@ export function DivisionsSection() {
                   href={division.href}
                   className="w-full py-3 px-4 rounded-xl bg-slate-50 hover:bg-gradient-to-r hover:from-red-600 hover:to-orange-500 border border-slate-200 hover:border-transparent text-xs font-bold text-slate-800 hover:text-white flex items-center justify-between transition-all shadow-sm group/btn"
                 >
-                  <span>Explore {division.title}</span>
+                  <span>Explore {division.number === "04" ? "SP LMS Builder" : division.title}</span>
                   <ArrowRight className="w-4 h-4 text-orange-500 group-hover/btn:text-white group-hover/btn:translate-x-1 transition-transform" />
                 </a>
               </div>

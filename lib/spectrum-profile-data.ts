@@ -76,7 +76,7 @@ export const COMPANY_INFO = {
   },
 };
 
-export const THREE_DIVISIONS: DivisionItem[] = [
+export const STRATEGIC_DIVISIONS: DivisionItem[] = [
   {
     number: "01",
     title: "Corporate Training",
@@ -121,6 +121,21 @@ export const THREE_DIVISIONS: DivisionItem[] = [
     ],
     icon: "award",
     href: "#lifelong-learning",
+  },
+  {
+    number: "04",
+    title: "SaaS LMS Solutions",
+    subtitle: "SP LMS Builder · Powered by SP Digital Systems",
+    description:
+      "Your own branded learning platform, from a simple LMS to an enterprise system. Explore a managed solution shaped around your learners, trainers and organisation.",
+    highlights: [
+      "SP LMS Launch, Growth and Enterprise packages",
+      "Domain, hosting and admin onboarding in one agreed package",
+      "AI assistance and Google Meet setup scoped to your needs",
+      "Courses, assessments, certificates and reporting",
+    ],
+    icon: "layers",
+    href: "/sp-lms-builder",
   },
 ];
 

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | Spectrum Edu Resources",
   },
   description:
-    "Empowering Minds. Building Futures. Spectrum Edu Resources (M) Sdn. Bhd. (Co. No. 202201007933) is a Malaysian education and training company delivering HRD Corp claimable corporate training, student recruitment, and lifelong micro-credentials.",
+    "Empowering Minds. Building Futures. Spectrum Edu Resources (M) Sdn. Bhd. (Co. No. 202201007933) is a Malaysian education and training company delivering HRD Corp claimable corporate training, student recruitment, lifelong micro-credentials, and SaaS LMS solutions through SP LMS Builder.",
   keywords: [
     "Spectrum Edu Resources",
     "Spectrum Edu Resources (M) Sdn. Bhd.",
@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     "Corporate Training Malaysia",
     "Student Recruitment Malaysia",
     "Lifelong Learning",
+    "SP LMS Builder",
+    "SaaS LMS Malaysia",
     "MQA Micro-credentials",
     "JPK",
     "Program Madani",
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Spectrum Edu Resources (M) Sdn. Bhd. — HRD Corp Registered Training Provider",
     description:
-      "Empowering Minds. Building Futures. Bridging the gap between education and professional success across Corporate Training, Student Recruitment, and Lifelong Learning.",
+      "Empowering Minds. Building Futures. Bridging the gap between education and professional success across Corporate Training, Student Recruitment, Lifelong Learning, and SaaS LMS Solutions.",
     type: "website",
     locale: "en_MY",
     url: "https://spectrummalaysia.org",

@@ -2,6 +2,11 @@ import { type NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/middleware";
 
 export async function proxy(request: NextRequest) {
+  // This marketing page is public and does not need an LMS session.
+  if (request.nextUrl.pathname === "/sp-lms-builder") {
+    return NextResponse.next();
+  }
+
   const { supabase, supabaseResponse } = createClient(request);
 
   // Refresh session — important for Supabase SSR auth

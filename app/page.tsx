@@ -25,7 +25,7 @@ export default function HomePage() {
     name: COMPANY_INFO.name,
     legalName: COMPANY_INFO.name,
     description:
-      "A premier Malaysian education and training company providing comprehensive HRD Corp claimable corporate training, nationwide student recruitment, and lifelong micro-credentials.",
+      "A premier Malaysian education and training company providing comprehensive HRD Corp claimable corporate training, nationwide student recruitment, lifelong micro-credentials, and SaaS LMS solutions through SP LMS Builder, powered by SP Digital Systems.",
     url: "https://spectrummalaysia.org",
     logo: "https://spectrummalaysia.org/spectrum-logo.png",
     address: {
@@ -66,7 +66,7 @@ export default function HomePage() {
         {/* 4. About Spectrum Edu Resources & How We Deliver Value (Pages 2-3) */}
         <AboutSection />
 
-        {/* 5. Our Three Divisions: Corporate Training, Recruitment, Lifelong Learning (Page 4) */}
+        {/* 5. Our Four Strategic Divisions */}
         <DivisionsSection />
 
         {/* 6. HRD Corp Registered Provider & 5-Step Claim Process (Pages 5-7) */}
