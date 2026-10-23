@@ -31,7 +31,7 @@ export function LandingFooter() {
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 mt-4 leading-relaxed max-w-sm">
-                Empowering Minds. Building Futures. Delivering comprehensive HRD Corp claimable corporate training, nationwide student recruitment, and lifelong micro-credentials.
+                Empowering Minds. Building Futures. Delivering comprehensive HRD Corp claimable corporate training, nationwide student recruitment, lifelong micro-credentials, and SaaS LMS solutions through SP LMS Builder.
               </p>
 
               <div className="mt-5 p-3 rounded-xl bg-amber-50 border border-amber-200 flex items-center gap-2.5">
@@ -44,34 +44,39 @@ export function LandingFooter() {
             </div>
           </div>
 
-          {/* Column 2: Our Three Divisions */}
+          {/* Column 2: Our Four Divisions */}
           <div className="lg:col-span-3">
             <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider font-['Sora'] mb-4">
-              Our Three Divisions
+              Our Four Divisions
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <a href="#divisions" className="hover:text-orange-600 transition-colors">
+                <a href="/#divisions" className="hover:text-orange-600 transition-colors">
                   01. Corporate Training (HRD Corp)
                 </a>
               </li>
               <li>
-                <a href="#recruitment" className="hover:text-orange-600 transition-colors">
+                <a href="/#recruitment" className="hover:text-orange-600 transition-colors">
                   02. Student Recruitment
                 </a>
               </li>
               <li>
-                <a href="#lifelong" className="hover:text-orange-600 transition-colors">
+                <a href="/#lifelong" className="hover:text-orange-600 transition-colors">
                   03. Lifelong Learning & Micro-Credentials
                 </a>
               </li>
               <li>
-                <a href="#hrd-claim" className="hover:text-orange-600 transition-colors">
+                <a href="/sp-lms-builder" className="hover:text-orange-600 transition-colors">
+                  04. SaaS LMS Solutions — SP LMS Builder
+                </a>
+              </li>
+              <li>
+                <a href="/#hrd-claim" className="hover:text-orange-600 transition-colors">
                   HRD Corp Claim Guide (5 Steps)
                 </a>
               </li>
               <li>
-                <a href="#programmes" className="hover:text-orange-600 transition-colors">
+                <a href="/#programmes" className="hover:text-orange-600 transition-colors">
                   45 Claimable Programmes Catalogue
                 </a>
               </li>
@@ -85,17 +90,17 @@ export function LandingFooter() {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <a href="#advisors" className="hover:text-orange-600 transition-colors">
+                <a href="/#advisors" className="hover:text-orange-600 transition-colors">
                   Board of Advisors
                 </a>
               </li>
               <li>
-                <a href="#partners" className="hover:text-orange-600 transition-colors">
+                <a href="/#partners" className="hover:text-orange-600 transition-colors">
                   Accreditation Bodies
                 </a>
               </li>
               <li>
-                <a href="#partners" className="hover:text-orange-600 transition-colors">
+                <a href="/#partners" className="hover:text-orange-600 transition-colors">
                   Institutional Partners
                 </a>
               </li>
@@ -105,7 +110,7 @@ export function LandingFooter() {
                 </Link>
               </li>
               <li>
-                <a href="#contact" className="hover:text-orange-600 transition-colors">
+                <a href="/#contact" className="hover:text-orange-600 transition-colors">
                   Contact & Support
                 </a>
               </li>

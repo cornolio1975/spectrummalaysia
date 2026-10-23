@@ -228,6 +228,26 @@ No authentication required. Uses a public-safe database query.
 
 ## Deployment (Hostinger Cloud)
 
+### Public SP LMS Builder information page
+
+`/sp-lms-builder` presents Spectrum's fourth strategic division, SaaS LMS
+Solutions, through SP LMS Builder (powered by SP Digital Systems). The homepage,
+desktop/mobile division menus and footer link to it. Launch, Growth and Enterprise
+package scope is quotation-based; no prices, unlimited usage or live AI service
+are promised by this page.
+
+The enquiry form prepares an email for the visitor to review and send to the
+existing company contact address. It also shows copyable text as a fallback. It
+does not send, store or acknowledge receipt of enquiries. No new credentials or
+database tables are needed. Confirm the existing contact mailbox is monitored
+before using the page in a campaign.
+
+The exact marketing route bypasses LMS session lookup; protected routes keep
+their existing authentication checks. Run `node --test tests/lms-public-access.test.cjs`
+for the route-isolation regression checks, then `npm run build` for production
+compilation and TypeScript validation. Deploy using the existing Hostinger setup
+below; a repository change alone is not proof that the live domain was updated.
+
 1. Build the application: `npm run build`
 2. Set environment variables on Hostinger server
 3. Start with: `npm run start` or configure PM2

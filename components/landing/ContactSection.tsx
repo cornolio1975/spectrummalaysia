@@ -84,7 +84,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
               </h2>
 
               <p className="text-base text-slate-600 leading-relaxed mb-8 font-normal">
-                Talk to us about HRD Corp claimable corporate training, stackable micro-credentials, or tertiary student recruitment.
+                Talk to us about HRD Corp claimable corporate training, stackable micro-credentials, tertiary student recruitment, or your own branded LMS.
               </p>
 
               <div className="space-y-6">
@@ -172,6 +172,10 @@ export function ContactSection({ contact }: ContactSectionProps) {
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-8">
                 Connect with our corporate training directors and institutional admissions consultants.
+              </p>
+
+              <p className="mb-6 rounded-xl border border-orange-200 bg-orange-50 p-4 text-sm text-slate-700">
+                Planning your own learning platform? <a href="/sp-lms-builder#enquire" className="font-bold text-orange-700 underline">Request an SP LMS Builder quotation</a>.
               </p>
 
               {status === "success" && (

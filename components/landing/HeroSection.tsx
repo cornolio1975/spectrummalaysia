@@ -60,8 +60,8 @@ export function HeroSection() {
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mb-7 font-normal">
               A premier Malaysian education and training company delivering comprehensive{" "}
               <strong className="text-slate-900 font-semibold">Corporate Training</strong>,{" "}
-              <strong className="text-slate-900 font-semibold">Student Recruitment</strong>, and{" "}
-              <strong className="text-slate-900 font-semibold">Lifelong Learning</strong>.{" "}
+              <strong className="text-slate-900 font-semibold">Student Recruitment</strong>,{" "}
+              <strong className="text-slate-900 font-semibold">Lifelong Learning</strong>, and <strong className="text-slate-900 font-semibold">SaaS LMS Solutions</strong>.{" "}
               <span className="text-orange-700 font-medium italic block mt-1.5">
                 Our mission: to bridge the gap between education and professional success.
               </span>
@@ -172,7 +172,7 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* Three Divisions Quick Matrix */}
+              {/* Four Divisions Quick Matrix */}
               <div className="mt-4 space-y-2">
                 <a
                   href="#programmes"
@@ -226,6 +226,16 @@ export function HeroSection() {
                     </div>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-700 transition-colors" />
+                </a>
+                <a href="/sp-lms-builder" className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-orange-300 flex items-center justify-between group transition-colors">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-orange-100 text-orange-700 flex items-center justify-center font-mono text-xs font-bold">04</span>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-orange-700">SaaS LMS Solutions</div>
+                      <div className="text-[11px] text-slate-500">SP LMS Builder · From simple LMS to enterprise</div>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
                 </a>
               </div>
 
